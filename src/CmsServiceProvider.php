@@ -40,5 +40,8 @@ class CmsServiceProvider extends BaseBootableServiceProvider
         CmsModels::sites();
         CmsModels::menus();
         CmsModels::menuItems();
+        CmsModels::pages();
+        CmsModels::pageSections();
+        CmsModels::pageBlocks();
     }
 }
