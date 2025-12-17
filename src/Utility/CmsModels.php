@@ -19,17 +19,17 @@ use Nip\Records\RecordManager;
  */
 class CmsModels extends ModelFinder
 {
-    public const string SITES = 'sites';
+    public const SITES = 'sites';
 
-    public const string MENUS = 'menus';
+    public const MENUS = 'menus';
 
-    public const string MENU_ITEMS = 'menu_items';
+    public const MENU_ITEMS = 'menu_items';
 
-    public const string PAGES = 'pages';
+    public const PAGES = 'pages';
 
-    public const string PAGE_SECTIONS = 'page_sections';
+    public const PAGE_SECTIONS = 'page_sections';
 
-    public const string PAGE_BLOCKS = 'page_blocks';
+    public const PAGE_BLOCKS = 'page_blocks';
 
 
     public static function sites(): Sites|RecordManager

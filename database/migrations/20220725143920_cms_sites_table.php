@@ -36,7 +36,9 @@ final class CmsSitesTable extends AbstractMigration
             ])
             ->addColumn('created_at', 'timestamp', [
                 'default' => 'CURRENT_TIMESTAMP',
-            ]);
+            ])
+            ->addIndex(['owner_id', 'owner'], ['name' => 'idx_owner'])
+        ;
 
         $table->save();
     }

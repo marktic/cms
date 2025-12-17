@@ -11,8 +11,8 @@ use Marktic\Cms\Utility\PackageConfig;
 
 trait MenuItemRepositoryTrait
 {
-    public const string TABLE = 'cms_menus';
-    public const string CONTROLLER = 'cms-menu_items';
+    public const TABLE = 'cms_menus';
+    public const CONTROLLER = 'cms-menu_items';
 
     use HasFormsRecordsTrait;
     use TimestampableManagerTrait;

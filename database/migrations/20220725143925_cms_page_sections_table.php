@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 use Phinx\Migration\AbstractMigration;
 
-final class CmsPageSections extends AbstractMigration
+final class CmsPageSectionsTable extends AbstractMigration
 {
     /**
      * Change Method.
@@ -26,7 +26,7 @@ final class CmsPageSections extends AbstractMigration
         }
         $table = $this->table($table_name);
         $table
-            ->addColumn('page_id', 'integer', ['null' => true])
+            ->addColumn('page_id', 'integer', ['null' => false, 'signed' => false])
             ->addColumn('title', 'string', ['limit' => 255, 'null' => false])
             ->addColumn('type', 'string', ['limit' => 100, 'null' => false])
             ->addColumn('metadata', 'json', ['null' => true])

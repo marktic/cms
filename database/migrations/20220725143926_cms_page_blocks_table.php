@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 use Phinx\Migration\AbstractMigration;
 
-final class CmsPageBlocks extends AbstractMigration
+final class CmsPageBlocksTable extends AbstractMigration
 {
     /**
      * Change Method.
@@ -26,9 +26,10 @@ final class CmsPageBlocks extends AbstractMigration
         }
         $table = $this->table($table_name);
         $table
-            ->addColumn('block_id', 'integer', ['null' => true])
+            ->addColumn('section_id', 'integer', ['null' => false, 'signed' => false])
             ->addColumn('type', 'string', ['limit' => 100, 'null' => false])
             ->addColumn('metadata', 'json', ['null' => true])
+            ->addColumn('order', 'integer', ['null' => false, 'signed' => false, 'default' => 0, 'limit' => \Phinx\Db\Adapter\MysqlAdapter::INT_TINY])
             ->addColumn('updated_at', 'timestamp', [
                 'default' => 'CURRENT_TIMESTAMP',
                 'update' => 'CURRENT_TIMESTAMP',
@@ -36,8 +37,8 @@ final class CmsPageBlocks extends AbstractMigration
             ->addColumn('created_at', 'timestamp', [
                 'default' => 'CURRENT_TIMESTAMP',
             ])
-        ->addIndex(['page_id'])
-        ->addForeignKey('page_id', 'mkt_cms_pages', 'id', ['delete'=> 'CASCADE', 'update'=> 'NO_ACTION']);
+            ->addIndex(['section_id'])
+            ->addForeignKey('section_id', 'mkt_cms_page_sections', 'id', ['delete' => 'CASCADE', 'update' => 'NO_ACTION']);
 
         $table->save();
     }

@@ -11,8 +11,8 @@ use Marktic\Cms\Utility\PackageConfig;
 
 trait PageRepositoryTrait
 {
-    public const string TABLE = 'cms_pages';
-    public const string CONTROLLER = 'cms-pages';
+    public const TABLE = 'cms_pages';
+    public const CONTROLLER = 'cms-pages';
 
     use HasFormsRecordsTrait;
     use TimestampableManagerTrait;

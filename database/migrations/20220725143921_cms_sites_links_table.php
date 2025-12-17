@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 use Phinx\Migration\AbstractMigration;
 
-final class CmsSitesTable extends AbstractMigration
+final class CmsSitesLinksTable extends AbstractMigration
 {
     /**
      * Change Method.
@@ -26,13 +26,12 @@ final class CmsSitesTable extends AbstractMigration
         }
         $table = $this->table($table_name);
         $table
-            ->addColumn('site_id', 'integer', ['null' => true])
-            ->addColumn('link_type', 'string', ['null' => true])
-            ->addColumn('link_id', 'integer', ['null' => true])
-            ->addForeignKey('site_id', 'mkt_cms_sites', 'id', ['delete'=> 'SET_NULL', 'update'=> 'NO_ACTION'])
+            ->addColumn('site_id', 'integer', ['null' => false, 'signed' => false])
+            ->addColumn('link_type', 'string', ['null' => false])
+            ->addColumn('link_id', 'integer', ['null' => false, 'signed' => false])
             ->addIndex(['site_id'])
             ->addIndex(['link_type', 'link_id'])
-            ;
+            ->addForeignKey('site_id', 'mkt_cms_sites', 'id', ['delete' => 'NO_ACTION', 'update' => 'NO_ACTION']);
 
         $table->save();
     }

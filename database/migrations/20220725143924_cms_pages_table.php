@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 use Phinx\Migration\AbstractMigration;
 
-final class CmsPages extends AbstractMigration
+final class CmsPagesTable extends AbstractMigration
 {
     /**
      * Change Method.
@@ -19,15 +19,15 @@ final class CmsPages extends AbstractMigration
      */
     public function change(): void
     {
-        $table_name = 'mkt_cms_items';
+        $table_name = 'mkt_cms_pages';
         $exists = $this->hasTable($table_name);
         if ($exists) {
             return;
         }
         $table = $this->table($table_name);
         $table
-            ->addColumn('owner', 'string', ['limit' => 255, 'null' => true])
-            ->addColumn('owner_id', 'integer', ['null' => true])
+            ->addColumn('owner', 'string', ['limit' => 255, 'null' => false])
+            ->addColumn('owner_id', 'integer', ['null' => false, 'signed' => false])
             ->addColumn('name', 'string', ['limit' => 255, 'null' => false])
             ->addColumn('slug', 'string', ['limit' => 255, 'null' => false])
             ->addColumn('metadata', 'json', ['null' => true])

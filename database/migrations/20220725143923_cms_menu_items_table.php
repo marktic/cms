@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 use Phinx\Migration\AbstractMigration;
 
-final class CmsMenuItems extends AbstractMigration
+final class CmsMenuItemsTable extends AbstractMigration
 {
     /**
      * Change Method.
@@ -19,17 +19,17 @@ final class CmsMenuItems extends AbstractMigration
      */
     public function change(): void
     {
-        $table_name = 'mkt_cms_items';
+        $table_name = 'mkt_cms_menu_items';
         $exists = $this->hasTable($table_name);
         if ($exists) {
             return;
         }
         $table = $this->table($table_name);
         $table
-            ->addColumn('menu_id', 'integer', ['null' => false ])
-            ->addColumn('parent_id', 'integer', ['null' => true])
-            ->addColumn('owner_id', 'integer', ['null' => true])
-            ->addColumn('owner', 'string', ['null' => true])
+            ->addColumn('menu_id', 'integer', ['null' => false, 'signed' => false])
+            ->addColumn('parent_id', 'integer', ['null' => true, 'signed' => false])
+            ->addColumn('owner_id', 'integer', ['null' => false, 'signed' => false])
+            ->addColumn('owner', 'string', ['null' => false])
             ->addColumn('label', 'string', ['limit' => 255, 'null' => false])
             ->addColumn('link', 'string', ['limit' => 255, 'null' => true])
             ->addColumn('target', 'string', ['limit' => 255, 'null' => true])
