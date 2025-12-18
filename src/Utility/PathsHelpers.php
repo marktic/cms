@@ -20,11 +20,11 @@ class PathsHelpers
 
     public static function modules($path): string
     {
-        return static::basePath() . '/Bundle/Modules' . $path;
+        return static::basePath() . '/src/Bundle/Modules' . $path;
     }
 
     public static function viewsAdmin()
     {
-        return static::modules( '/admin/views');
+        return static::modules( '/Admin/views');
     }
 }

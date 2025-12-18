@@ -20,6 +20,9 @@ trait BaseRepositoryTrait
         $this->initRelationsCms();
     }
 
+    protected function initRelationsCms()
+    {
+    }
     protected function generateController(): string
     {
         if (\defined('static::CONTROLLER')) {

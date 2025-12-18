@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Marktic\Cms\Menus\Models;
 
 use ByTIC\Records\Behaviors\HasForms\HasFormsRecordsTrait;
+use Marktic\Cms\Base\Models\HasTenant\HasTenantRepository;
 use Marktic\Cms\Base\Models\Timestampable\TimestampableManagerTrait;
 use Marktic\Cms\Base\Models\Traits\BaseRepositoryTrait;
 use Marktic\Cms\Base\Models\Traits\HasDatabaseConnectionTrait;
@@ -16,7 +17,10 @@ trait MenuRepositoryTrait
     public const TABLE = 'mkt_cms_menus';
     public const CONTROLLER = 'mkt_cms-menus';
 
-    use BaseRepositoryTrait;
+    use BaseRepositoryTrait, HasTenantRepository {
+        HasTenantRepository::initRelations insteadof BaseRepositoryTrait;
+        HasTenantRepository::initRelationsCms insteadof BaseRepositoryTrait;
+    }
 
     protected function initRelationsCms()
     {

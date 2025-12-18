@@ -26,8 +26,8 @@ final class CmsSitesTable extends AbstractMigration
         }
         $table = $this->table($table_name);
         $table
-            ->addColumn('owner_id', 'integer', ['null' => true])
-            ->addColumn('owner', 'string', ['null' => true])
+            ->addColumn('tenant_id', 'integer', ['null' => true])
+            ->addColumn('tenant', 'string', ['null' => true])
             ->addColumn('name', 'string', ['limit' => 255, 'null' => false])
             ->addColumn('metadata', 'json', ['null' => true])
             ->addColumn('updated_at', 'timestamp', [
@@ -37,7 +37,7 @@ final class CmsSitesTable extends AbstractMigration
             ->addColumn('created_at', 'timestamp', [
                 'default' => 'CURRENT_TIMESTAMP',
             ])
-            ->addIndex(['owner_id', 'owner'], ['name' => 'idx_owner'])
+            ->addIndex(['tenant_id', 'tenant'], ['name' => 'idx_tenant'])
         ;
 
         $table->save();

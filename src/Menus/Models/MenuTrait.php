@@ -6,6 +6,7 @@ namespace Marktic\Cms\Menus\Models;
 
 use ByTIC\Records\Behaviors\HasForms\HasFormsRecordTrait;
 use Marktic\Cms\Base\Models\HasMetadata\RecordHasMetadataTrait;
+use Marktic\Cms\Base\Models\HasTenant\HasTenantRecord;
 use Marktic\Cms\Base\Models\Timestampable\TimestampableTrait;
 use Nip\Records\Collections\Collection;
 use Nip\Records\Traits\HasUuid\HasUuidRecordTrait;
@@ -14,9 +15,9 @@ use Nip\Records\Traits\HasUuid\HasUuidRecordTrait;
  */
 trait MenuTrait
 {
+    use HasTenantRecord;
     use TimestampableTrait;
     use HasUuidRecordTrait;
     use HasFormsRecordTrait;
     use RecordHasMetadataTrait;
-
 }

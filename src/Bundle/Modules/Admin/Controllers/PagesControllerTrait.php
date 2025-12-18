@@ -2,7 +2,7 @@
 
 namespace Marktic\Cms\Bundle\Modules\Admin\Controllers;
 
-trait SitesControllerTrait
+trait PagesControllerTrait
 {
 
 }

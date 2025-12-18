@@ -28,8 +28,6 @@ final class CmsMenuItemsTable extends AbstractMigration
         $table
             ->addColumn('menu_id', 'integer', ['null' => false, 'signed' => false])
             ->addColumn('parent_id', 'integer', ['null' => true, 'signed' => false])
-            ->addColumn('owner_id', 'integer', ['null' => false, 'signed' => false])
-            ->addColumn('owner', 'string', ['null' => false])
             ->addColumn('label', 'string', ['limit' => 255, 'null' => false])
             ->addColumn('link', 'string', ['limit' => 255, 'null' => true])
             ->addColumn('target', 'string', ['limit' => 255, 'null' => true])
@@ -44,7 +42,6 @@ final class CmsMenuItemsTable extends AbstractMigration
             ])
         ->addIndex(['menu_id'], ['name' => 'idx_menu_id'])
         ->addIndex(['parent_id'], ['name' => 'idx_parent_id'])
-        ->addIndex(['owner', 'owner_id'], ['name' => 'idx_owner'])
         ->addForeignKey('menu_id', 'mkt_cms_menus', 'id', ['delete'=> 'CASCADE', 'update'=> 'NO_ACTION'])
         ->addForeignKey('parent_id', $table_name, 'id', ['delete'=> 'CASCADE', 'update'=> 'NO_ACTION']);
 

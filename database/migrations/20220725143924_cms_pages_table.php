@@ -26,10 +26,11 @@ final class CmsPagesTable extends AbstractMigration
         }
         $table = $this->table($table_name);
         $table
-            ->addColumn('owner', 'string', ['limit' => 255, 'null' => false])
-            ->addColumn('owner_id', 'integer', ['null' => false, 'signed' => false])
+            ->addColumn('tenant', 'string', ['limit' => 255, 'null' => false])
+            ->addColumn('tenant_id', 'integer', ['null' => false, 'signed' => false])
             ->addColumn('name', 'string', ['limit' => 255, 'null' => false])
             ->addColumn('slug', 'string', ['limit' => 255, 'null' => false])
+            ->addColumn('', 'text', ['null' => false])
             ->addColumn('metadata', 'json', ['null' => true])
             ->addColumn('updated_at', 'timestamp', [
                 'default' => 'CURRENT_TIMESTAMP',
@@ -38,9 +39,9 @@ final class CmsPagesTable extends AbstractMigration
             ->addColumn('created_at', 'timestamp', [
                 'default' => 'CURRENT_TIMESTAMP',
             ])
-        ->addIndex(['owner', 'owner_id'], ['name' => 'idx_owner'])
+        ->addIndex(['tenant', 'tenant_id'], ['name' => 'idx_tenant'])
         ->addIndex(['slug'], ['name' => 'slug'])
-        ->addIndex(['owner', 'owner_id', 'slug'], ['name' => 'idx_owner_slug', 'unique' => true])
+        ->addIndex(['tenant', 'tenant_id', 'slug'], ['name' => 'idx_tenant_slug', 'unique' => true])
         ->save();
     }
 }

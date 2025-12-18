@@ -26,8 +26,8 @@ final class CmsMenuTable extends AbstractMigration
         }
         $table = $this->table($table_name);
         $table
-            ->addColumn('owner_id', 'integer', ['null' => false, 'signed' => false])
-            ->addColumn('owner', 'string', ['null' => false])
+            ->addColumn('tenant_id', 'integer', ['null' => false, 'signed' => false])
+            ->addColumn('tenant', 'string', ['null' => false])
             ->addColumn('name', 'string', ['limit' => 255, 'null' => false])
             ->addColumn('metadata', 'json', ['null' => true])
             ->addColumn('updated_at', 'timestamp', [
