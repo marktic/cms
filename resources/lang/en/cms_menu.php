@@ -1,7 +1,7 @@
 <?php
 
 return [
-    'mkt_cms-menu.labels.title' => 'CMS Menus',
-    'mkt_cms-menu.labels.title.singular' => 'CMS Menu',
-    'mkt_cms-menu.labels.add' => 'Add Menu',
+    'mkt_cms-menus.labels.title' => 'CMS Menus',
+    'mkt_cms-menus.labels.title.singular' => 'CMS Menu',
+    'mkt_cms-menus.labels.add' => 'Add Menu',
 ];
