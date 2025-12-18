@@ -6,8 +6,6 @@ use Marktic\Cms\Utility\ViewHelper;
 
 trait AbstractCmsControllerTrait
 {
-
-
     protected function bootAbstractCmsControllerTrait()
     {
         $this->after(

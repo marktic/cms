@@ -9,6 +9,7 @@ use Marktic\Cms\Base\Models\HasTenant\HasTenantRepository;
 use Marktic\Cms\Base\Models\Timestampable\TimestampableManagerTrait;
 use Marktic\Cms\Base\Models\Traits\BaseRepositoryTrait;
 use Marktic\Cms\Base\Models\Traits\HasDatabaseConnectionTrait;
+use Marktic\Cms\Sites\Models\Filters\FilterManager;
 use Marktic\Cms\Utility\CmsModels;
 use Marktic\Cms\Utility\PackageConfig;
 
@@ -22,6 +23,10 @@ trait SiteRepositoryTrait
         HasTenantRepository::initRelationsCms insteadof BaseRepositoryTrait;
     }
 
+    protected function generateFilterManagerDefaultClass(): string
+    {
+        return FilterManager::class;
+    }
 
     protected function generateTable()
     {
