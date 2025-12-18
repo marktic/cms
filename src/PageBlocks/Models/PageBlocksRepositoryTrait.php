@@ -13,8 +13,8 @@ use Marktic\Cms\Utility\PackageConfig;
 
 trait PageBlocksRepositoryTrait
 {
-    public const TABLE = 'cms_page_blocks';
-    public const CONTROLLER = 'cms-page_blocks';
+    public const TABLE = 'mkt_cms_page_blocks';
+    public const CONTROLLER = 'mkt_cms-page_blocks';
 
     use BaseRepositoryTrait;
 

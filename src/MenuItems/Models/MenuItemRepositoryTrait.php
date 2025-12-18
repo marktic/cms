@@ -13,8 +13,8 @@ use Marktic\Cms\Utility\PackageConfig;
 
 trait MenuItemRepositoryTrait
 {
-    public const TABLE = 'cms_menus';
-    public const CONTROLLER = 'cms-menu_items';
+    public const TABLE = 'mkt_cms_menus';
+    public const CONTROLLER = 'mkt_cms-menu_items';
 
     use BaseRepositoryTrait;
 

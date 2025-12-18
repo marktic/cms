@@ -13,8 +13,8 @@ use Marktic\Cms\Utility\PackageConfig;
 
 trait SiteRepositoryTrait
 {
-    public const TABLE = 'cms_sites';
-    public const CONTROLLER = 'cms-sites';
+    public const TABLE = 'mkt_cms_sites';
+    public const CONTROLLER = 'mkt_cms-sites';
 
     use BaseRepositoryTrait;
 

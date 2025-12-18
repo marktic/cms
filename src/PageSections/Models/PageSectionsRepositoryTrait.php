@@ -13,8 +13,8 @@ use Marktic\Cms\Utility\PackageConfig;
 
 trait PageSectionsRepositoryTrait
 {
-    public const TABLE = 'cms_page_sections';
-    public const CONTROLLER = 'cms-page_sections';
+    public const TABLE = 'mkt_cms_page_sections';
+    public const CONTROLLER = 'mkt_cms-page_sections';
 
     use BaseRepositoryTrait;
 
