@@ -26,7 +26,7 @@ class CmsServiceProvider extends BaseBootableServiceProvider
 
     protected function translationsPath(): string
     {
-        return __DIR__ . '/Bundle/Resources/lang/';
+        return dirname(__DIR__).'/resources/lang/';
     }
 
     protected function registerCommands()

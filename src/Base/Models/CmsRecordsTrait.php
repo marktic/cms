@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Marktic\Cms\Base\Models\Traits;
+namespace Marktic\Cms\Base\Models;
 
 use ByTIC\Records\Behaviors\HasForms\HasFormsRecordsTrait;
 use Nip\I18n\Translatable\HasTranslations;
@@ -11,7 +11,7 @@ use Nip\Records\Filters\Records\HasFiltersRecordsTrait;
 /**
  * Trait CommonRecordsTrait.
  */
-trait CommonRecordsTrait
+trait CmsRecordsTrait
 {
     use HasFiltersRecordsTrait;
     use HasFormsRecordsTrait;
@@ -30,12 +30,4 @@ trait CommonRecordsTrait
         return 'Marktic\Cms\Models\\';
     }
 
-    protected function generateController(): string
-    {
-        if (\defined('static::CONTROLLER')) {
-            return static::CONTROLLER;
-        }
-
-        return $this->getTable();
-    }
 }

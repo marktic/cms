@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace Marktic\Cms\PageSections\Models;
 
+use Marktic\Cms\Base\Models\CmsRecordsTrait;
 use Nip\Records\RecordManager;
 
 class PageSections extends RecordManager
 {
     use PageSectionsRepositoryTrait;
-    use \ByTIC\Records\Behaviors\I18n\I18nRecordsTrait;
-    use \ByTIC\Records\Behaviors\HasForms\HasFormsRecordsTrait;
+    use CmsRecordsTrait;
 }
