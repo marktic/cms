@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Marktic\Cms;
 
 use ByTIC\PackageBase\BaseBootableServiceProvider;
-use Marktic\Cms\Utility\CmsModels;
 use Marktic\Cms\Utility\PackageConfig;
 
 /**

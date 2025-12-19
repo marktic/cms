@@ -5,6 +5,7 @@ use Marktic\Cms\Menus\Models\Menus;
 use Marktic\Cms\PageBlocks\Models\PageBlocks;
 use Marktic\Cms\Pages\Models\Pages;
 use Marktic\Cms\PageSections\Models\PageSections;
+use Marktic\Cms\SiteLinks\Models\SiteLinks;
 use Marktic\Cms\Sites\Models\Sites;
 use Marktic\Cms\Utility\CmsModels;
 
@@ -19,6 +20,7 @@ return [
     ),
     'tables' => [
         CmsModels::SITES => Sites::TABLE,
+        CmsModels::SITE_LINKS => SiteLinks::TABLE,
         CmsModels::MENUS => Menus::TABLE,
         CmsModels::MENU_ITEMS => MenuItems::TABLE,
         CmsModels::PAGES => Pages::TABLE,

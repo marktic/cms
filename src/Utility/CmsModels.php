@@ -11,6 +11,7 @@ use Marktic\Cms\Menus\Models\Menus;
 use Marktic\Cms\PageBlocks\Models\PageBlocks;
 use Marktic\Cms\Pages\Models\Pages;
 use Marktic\Cms\PageSections\Models\PageSections;
+use Marktic\Cms\SiteLinks\Models\SiteLinks;
 use Marktic\Cms\Sites\Models\Sites;
 use Nip\Records\RecordManager;
 
@@ -20,6 +21,8 @@ use Nip\Records\RecordManager;
 class CmsModels extends ModelFinder
 {
     public const SITES = 'sites';
+
+    public const SITE_LINKS = 'site_links';
 
     public const MENUS = 'menus';
 
@@ -39,7 +42,22 @@ class CmsModels extends ModelFinder
 
     public static function sitesClass(): string
     {
-        return get_class(static::sites());
+        return static::getModelsClass(self::SITES, Sites::class);
+    }
+
+    public static function siteLinks(): Sites|RecordManager
+    {
+        return static::getModels(self::SITE_LINKS, SiteLinks::class);
+    }
+
+    public static function siteLinksClass(): string
+    {
+        return static::getModelsClass(self::SITE_LINKS, SiteLinks::class);
+    }
+
+    public static function siteLinksTable(): string
+    {
+        return static::getTable(self::SITE_LINKS, SiteLinks::TABLE);
     }
 
     /**
@@ -52,7 +70,7 @@ class CmsModels extends ModelFinder
 
     public static function menusClass(): string
     {
-        return get_class(static::menus());
+        return static::getModelsClass(self::MENUS, Menus::class);
     }
 
     public static function menuItems()
@@ -62,7 +80,7 @@ class CmsModels extends ModelFinder
 
     public static function menuItemsClass(): string
     {
-        return get_class(static::menuItems());
+        return static::getModelsClass(self::MENU_ITEMS, MenuItems::class);
     }
 
     public static function pages(): Pages|RecordManager
@@ -72,7 +90,7 @@ class CmsModels extends ModelFinder
 
     public static function pagesClass(): string
     {
-        return get_class(static::pages());
+        return static::getModelsClass(self::PAGES, Pages::class);
     }
 
     public static function pageSections(): PageSections|RecordManager
@@ -82,7 +100,7 @@ class CmsModels extends ModelFinder
 
     public static function pageSectionsClass(): string
     {
-        return get_class(static::pageSections());
+        return static::getModelsClass(self::PAGE_SECTIONS, PageSections::class);
     }
 
     public static function pageBlocks(): PageBlocks|RecordManager
@@ -92,7 +110,7 @@ class CmsModels extends ModelFinder
 
     public static function pageBlocksClass(): string
     {
-        return get_class(static::pageBlocks());
+        return static::getModelsClass(self::PAGE_BLOCKS, PageBlocks::class);
     }
 
     protected static function packageName(): string

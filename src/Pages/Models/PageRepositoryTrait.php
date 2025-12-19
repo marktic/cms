@@ -4,11 +4,9 @@ declare(strict_types=1);
 
 namespace Marktic\Cms\Pages\Models;
 
-use ByTIC\Records\Behaviors\HasForms\HasFormsRecordsTrait;
 use Marktic\Cms\Base\Models\HasTenant\HasTenantRepository;
-use Marktic\Cms\Base\Models\Timestampable\TimestampableManagerTrait;
 use Marktic\Cms\Base\Models\Traits\BaseRepositoryTrait;
-use Marktic\Cms\Base\Models\Traits\HasDatabaseConnectionTrait;
+use Marktic\Cms\Pages\Actions\Transform\GeneratePageSlug;
 use Marktic\Cms\Utility\CmsModels;
 use Marktic\Cms\Utility\PackageConfig;
 
@@ -24,6 +22,13 @@ trait PageRepositoryTrait
 
     protected function initRelationsCms()
     {
+    }
+
+    public function bootPageRepositoryTrait(): void
+    {
+        static::creating(function ($model) {
+            GeneratePageSlug::for($model)->checkOrSet();
+        });
     }
 
     protected function generateTable()

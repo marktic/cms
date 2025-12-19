@@ -9,7 +9,6 @@ use Marktic\Cms\Base\Models\HasMetadata\RecordHasMetadataTrait;
 use Marktic\Cms\Base\Models\HasTenant\HasTenantRecord;
 use Marktic\Cms\Base\Models\Timestampable\TimestampableTrait;
 use Marktic\Cms\Sites\Dto\SiteMetadata;
-use Nip\Records\Collections\Collection;
 use Nip\Records\Traits\HasUuid\HasUuidRecordTrait;
 
 /**

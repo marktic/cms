@@ -20,7 +20,11 @@ trait SiteRepositoryTrait
 
     use BaseRepositoryTrait, HasTenantRepository {
         HasTenantRepository::initRelations insteadof BaseRepositoryTrait;
-        HasTenantRepository::initRelationsCms insteadof BaseRepositoryTrait;
+    }
+
+    protected function initRelationsCms(): void
+    {
+        $this->initRelationsCmsTenant();
     }
 
     protected function generateFilterManagerDefaultClass(): string
