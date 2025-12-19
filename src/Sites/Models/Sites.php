@@ -9,6 +9,7 @@ use Nip\Records\RecordManager;
 
 class Sites extends RecordManager
 {
-    use SiteRepositoryTrait;
-    use CmsRecordsTrait;
+    use SiteRepositoryTrait, CmsRecordsTrait {
+        SiteRepositoryTrait::generateFilterManagerDefaultClass insteadof CmsRecordsTrait;
+    }
 }
