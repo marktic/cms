@@ -13,6 +13,8 @@ use Nip\Records\Collections\Collection;
 use Nip\Records\Traits\HasUuid\HasUuidRecordTrait;
 
 /**
+ *
+ * @property SiteMetadata $metadata
  */
 trait SiteTrait
 {
@@ -21,6 +23,20 @@ trait SiteTrait
     use HasUuidRecordTrait;
     use HasFormsRecordTrait;
     use RecordHasMetadataTrait;
+
+    protected string $name = '';
+
+    public function getName(): string
+    {
+        return $this->name;
+    }
+
+    public function setName(string $name): self
+    {
+        $this->name = $name;
+        return $this;
+    }
+
     protected function getMetadataClass(): ?string
     {
         return SiteMetadata::class;

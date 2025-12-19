@@ -2,7 +2,7 @@
 
 namespace Marktic\Cms\Tests;
 
-use Bytic\Phpqa\PHPUnit\TestCase;
+use Bytic\Phpqa\PHPUnit\TestCase as ByticTestCase;
 use Marktic\Cms\CmsServiceProvider;
 use Nip\Config\Config;
 use Nip\Container\Utility\Container;
@@ -10,7 +10,7 @@ use Nip\Container\Utility\Container;
 /**
  * Class AbstractTest
  */
-abstract class AbstractTest extends TestCase
+abstract class TestCase extends ByticTestCase
 {
 
     protected function loadConfig($data = [])

@@ -8,7 +8,7 @@ use ByTIC\DataObjects\Casts\Metadata\AsMetadataObject;
 use ByTIC\DataObjects\Casts\Metadata\Metadata;
 
 /**
- *
+ * @property Metadata $metadata
  */
 trait RecordHasMetadataTrait
 {

@@ -34,7 +34,8 @@ class GetSiteForTenantByRole extends AbstractAction
     protected function orCreateData($data): array
     {
         $data = $this->orCreateDataTenant($data);
-        $data['metadata']['role'] = $this->role;
+        $data['name'] = $data['name'] ?? ucfirst($this->role).' Site';
+        $data['metadata'] = json_encode(['role' => $this->role]);
         return $data;
     }
 
