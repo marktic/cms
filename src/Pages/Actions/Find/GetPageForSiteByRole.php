@@ -37,7 +37,13 @@ class GetPageForSiteByRole extends AbstractAction
             ->withLinkType(CmsModels::pages()->getMorphName())
             ->fetch();
         $sitePageIds = $siteLinks->pluck('link_id')->toArray();
-        $params['where'][] = ['id IN ?', $sitePageIds];
+        if (count($sitePageIds) > 0) {
+            $params['where'][] = ['id IN ?', $sitePageIds];
+        } else {
+            // No pages linked to site, return no results
+            $params['where'][] = ['id = ?', 0];
+        }
+
         $params['where']['role'] = ['JSON_EXTRACT(`metadata`, "$.role") = ?', $this->role];
         return $params;
     }

@@ -7,6 +7,7 @@ namespace Marktic\Cms\Pages\Models;
 use Marktic\Cms\Base\Models\HasTenant\HasTenantRepository;
 use Marktic\Cms\Base\Models\Traits\BaseRepositoryTrait;
 use Marktic\Cms\Pages\Actions\Transform\GeneratePageSlug;
+use Marktic\Cms\Pages\Models\Filters\FilterManager;
 use Marktic\Cms\Utility\CmsModels;
 use Marktic\Cms\Utility\PackageConfig;
 
@@ -26,9 +27,15 @@ trait PageRepositoryTrait
 
     public function bootPageRepositoryTrait(): void
     {
-        static::creating(function ($model) {
+        static::creating(function ($event) {
+            $model = $event->getRecord();
             GeneratePageSlug::for($model)->checkOrSet();
         });
+    }
+
+    protected function generateFilterManagerDefaultClass(): string
+    {
+        return FilterManager::class;
     }
 
     protected function generateTable()

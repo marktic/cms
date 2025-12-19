@@ -12,6 +12,7 @@ use Marktic\Cms\Utility\CmsModels;
 return [
     'models' => array(
         CmsModels::SITES => Sites::class,
+        CmsModels::SITE_LINKS => SiteLinks::class,
         CmsModels::MENUS => Menus::class,
         CmsModels::MENU_ITEMS => MenuItems::class,
         CmsModels::PAGES => Pages::class,

@@ -13,6 +13,6 @@ abstract class AbstractAction extends Action
 
     protected function generateRepository(): RecordManager
     {
-        return CmsModels::sites();
+        return CmsModels::pages();
     }
 }
