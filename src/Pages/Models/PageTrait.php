@@ -9,11 +9,13 @@ use Marktic\Cms\Base\Models\HasMetadata\RecordHasMetadataTrait;
 use Marktic\Cms\Base\Models\HasTenant\HasTenantRecord;
 use Marktic\Cms\Base\Models\Timestampable\TimestampableTrait;
 use Marktic\Cms\Pages\Dto\PageMetadata;
+use Marktic\Cms\PageSections\Models\PageSection;
 use Nip\Records\Collections\Collection;
 use Nip\Records\Traits\HasUuid\HasUuidRecordTrait;
 
 /**
  * @property PageMetadata $metadata
+ * @method PageSection[]|Collection getCmsPageSections()
  */
 trait PageTrait
 {

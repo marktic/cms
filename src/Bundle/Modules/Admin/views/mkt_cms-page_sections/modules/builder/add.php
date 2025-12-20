@@ -6,12 +6,10 @@ $page = $page ?? $this->item;
 $pageSectionRepository = CmsModels::pageSections();
 ?>
 
-<div class="bg-light p-3 mb-3 rounded">
-    <div class="dropdown">
-        <a class="btn btn-secondary"
+<div class="bg-light p-3 mb-3 rounded text-center">
+        <a class="btn btn-outline-primary"
            href="<?= $pageSectionRepository->compileURL('add', ['page_id' => $page->id]) ?>"
         >
             <?= $pageSectionRepository->getLabel('add'); ?>
         </a>
-    </div>
 </div>

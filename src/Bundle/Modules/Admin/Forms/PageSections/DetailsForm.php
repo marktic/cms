@@ -7,9 +7,10 @@ namespace  Marktic\Cms\Bundle\Modules\Admin\Forms\PageSections;
 use Marktic\Cms\Bundle\Library\Form\FormModel;
 use Marktic\Cms\Pages\Models\Page;
 use Marktic\Cms\PageSections\Dto\PageSectionCols;
+use Marktic\Cms\PageSections\Models\PageSection;
 
 /**
- * @method Page getModel()
+ * @method PageSection getModel()
  */
 class DetailsForm extends FormModel
 {
@@ -20,13 +21,14 @@ class DetailsForm extends FormModel
         $this->setAttrib('id', 'mkt-cms-page_sections-form');
 
         $this->initializeTitle();
+        $this->initializeCols();
 
         $this->addButton('save', translator()->trans('submit'));
     }
 
     protected function initializeTitle(): void
     {
-        $this->addInput('name', translator()->trans('name'), true);
+        $this->addInput('title', translator()->trans('title'), true);
     }
 
     protected function initializeCols(): void
@@ -37,5 +39,20 @@ class DetailsForm extends FormModel
         foreach (PageSectionCols::cases() as $case) {
             $element->addOption($case->value, $case->getLabel());
         }
+    }
+
+    protected function getDataFromModel(): void
+    {
+        parent::getDataFromModel();
+        $cols = $this->getModel()->getMetadata()->getCols();
+        $this->getElement('cols')->setValue($cols);
+    }
+
+    public function saveToModel()
+    {
+        parent::saveToModel();
+
+        $cols = $this->getElement('cols')->getValue();
+        $this->getModel()->getMetadata()->setCols($cols);
     }
 }

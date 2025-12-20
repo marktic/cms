@@ -23,6 +23,7 @@ trait BaseRepositoryTrait
     protected function initRelationsCms()
     {
     }
+
     protected function generateController(): string
     {
         if (\defined('static::CONTROLLER')) {

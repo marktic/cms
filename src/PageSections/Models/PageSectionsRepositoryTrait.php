@@ -16,10 +16,23 @@ trait PageSectionsRepositoryTrait
     public const TABLE = 'mkt_cms_page_sections';
     public const CONTROLLER = 'mkt_cms-page_sections';
 
+    public const RELATION_CMS_PAGE = 'CmsPage';
+
     use BaseRepositoryTrait;
 
-    protected function initRelationsCms()
+    protected function initRelationsCms(): void
     {
+        $this->initRelationsCmsPage();
+    }
+
+    public function initRelationsCmsPage(): void
+    {
+        $this->belongsTo(
+            self::RELATION_CMS_PAGE,
+            [
+            'class' => CmsModels::pagesClass(),
+            'fk' => 'page_id',
+        ]);
     }
 
     protected function generateTable()

@@ -16,6 +16,8 @@ trait PageRepositoryTrait
     public const TABLE = 'mkt_cms_pages';
     public const CONTROLLER = 'mkt_cms-pages';
 
+    public const RELATION_CMS_PAGE_SECTION = 'CmsPageSections';
+
     use BaseRepositoryTrait, HasTenantRepository {
         HasTenantRepository::initRelations insteadof BaseRepositoryTrait;
         HasTenantRepository::initRelationsCms insteadof BaseRepositoryTrait;
@@ -23,6 +25,19 @@ trait PageRepositoryTrait
 
     protected function initRelationsCms()
     {
+        $this->initRelationsCmsTenant();
+        $this->initRelationsCmsPageSections();
+    }
+
+    protected function initRelationsCmsPageSections()
+    {
+        $this->hasMany(
+            self::RELATION_CMS_PAGE_SECTION,
+            [
+                'class' => CmsModels::pageSectionsClass(),
+                'fk' => 'page_id',
+            ]
+        );
     }
 
     public function bootPageRepositoryTrait(): void
