@@ -1,6 +1,10 @@
 <?php
-/** @var \Marktic\Cms\Sites\Models\Site $item */
+
+use Marktic\Cms\Sites\Models\Site;
+
+/** @var Site $item */
 $item = $item ?? null;
+$metadata = $item->getMetadata();
 ?>
 <tr>
     <td>
@@ -9,6 +13,8 @@ $item = $item ?? null;
         </a>
     </td>
     <td>
-        <pre class="bg-light p-2 text-monospace"><?= json_encode($item->metadata->toArray()); ?></pre>
+        <span class="badge text-bg-primary">
+            <?= $metadata->getRole(); ?>
+        </span>
     </td>
 </tr>

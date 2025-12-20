@@ -9,6 +9,7 @@ use Nip\Records\RecordManager;
 
 class Pages extends RecordManager
 {
-    use PageRepositoryTrait;
-    use CmsRecordsTrait;
+    use PageRepositoryTrait, CmsRecordsTrait {
+        PageRepositoryTrait::generateFilterManagerDefaultClass insteadof CmsRecordsTrait;
+    }
 }

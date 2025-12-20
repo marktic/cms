@@ -28,7 +28,6 @@ final class CmsPageSectionsTable extends AbstractMigration
         $table
             ->addColumn('page_id', 'integer', ['null' => false, 'signed' => false])
             ->addColumn('title', 'string', ['limit' => 255, 'null' => false])
-            ->addColumn('type', 'string', ['limit' => 100, 'null' => false])
             ->addColumn('metadata', 'json', ['null' => true])
             ->addColumn('updated_at', 'timestamp', [
                 'default' => 'CURRENT_TIMESTAMP',

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Marktic\Cms;
 
 use ByTIC\PackageBase\BaseBootableServiceProvider;
+use Marktic\Cms\Utility\CmsModels;
 use Marktic\Cms\Utility\PackageConfig;
 
 /**
@@ -36,11 +37,11 @@ class CmsServiceProvider extends BaseBootableServiceProvider
     public function boot(): void
     {
         parent::boot();
-//        CmsModels::sites();
-//        CmsModels::menus();
-//        CmsModels::menuItems();
-//        CmsModels::pages();
-//        CmsModels::pageSections();
-//        CmsModels::pageBlocks();
+        CmsModels::sites();
+        CmsModels::menus();
+        CmsModels::menuItems();
+        CmsModels::pages();
+        CmsModels::pageSections();
+        CmsModels::pageBlocks();
     }
 }

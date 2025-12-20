@@ -14,6 +14,7 @@ use Nip\Records\Traits\HasUuid\HasUuidRecordTrait;
 /**
  *
  * @property SiteMetadata $metadata
+ * @method SiteMetadata getMetadata
  */
 trait SiteTrait
 {

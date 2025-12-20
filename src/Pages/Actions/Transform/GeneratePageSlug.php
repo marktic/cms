@@ -17,10 +17,7 @@ class GeneratePageSlug extends Action
     public function checkOrSet(): void
     {
         $slug = $this->getSubject()->getSlug();
-        if (!empty($slug)) {
-            return;
-        }
-        $slug = $this->generateSlug();
+        $slug = !empty($slug) ? Str::slug($slug) : $this->generateSlug();
         $this->getSubject()->setSlug($slug);
     }
 
