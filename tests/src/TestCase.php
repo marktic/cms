@@ -5,7 +5,7 @@ namespace Marktic\Cms\Tests;
 use Bytic\Phpqa\PHPUnit\TestCase as ByticTestCase;
 use Marktic\Cms\CmsServiceProvider;
 use Nip\Config\Config;
-use Nip\Container\Utility\Container;
+use Nip\Container\Container;
 
 /**
  * Class AbstractTest
@@ -16,8 +16,8 @@ abstract class TestCase extends ByticTestCase
     protected function loadConfig($data = [])
     {
         $config = config();
-        $configNew = new Config(['mkt_promotion' => $data], true);
-        Container::container()->set('config', $config->merge($configNew));
+        $configNew = new Config([CmsServiceProvider::NAME => $data], true);
+        Container::getInstance()->set('config', $config->merge($configNew));
     }
 
     protected function loadConfigFromFixture($name)

@@ -3,11 +3,13 @@
 use Marktic\Cms\MenuItems\Models\MenuItems;
 use Marktic\Cms\Menus\Models\Menus;
 use Marktic\Cms\PageBlocks\Models\PageBlocks;
+use Marktic\Cms\PageBlocks\Types\AbstractType;
 use Marktic\Cms\Pages\Models\Pages;
 use Marktic\Cms\PageSections\Models\PageSections;
 use Marktic\Cms\SiteLinks\Models\SiteLinks;
 use Marktic\Cms\Sites\Models\Sites;
 use Marktic\Cms\Utility\CmsModels;
+use Marktic\Cms\Utility\PathsHelpers;
 
 return [
     'models' => array(
@@ -31,5 +33,13 @@ return [
     'database' => [
         'connection' => 'main',
         'migrations' => true,
+    ],
+    'blocks' => [
+        'discovery' => [
+            'cms' => [
+                'namespace' => AbstractType::NAMESPACE,
+                'path' => PathsHelpers::basePath() . '/src/PageBlocks/Types',
+            ],
+        ],
     ],
 ];

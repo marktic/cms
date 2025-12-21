@@ -38,4 +38,9 @@ class PackageConfig extends \ByTIC\PackageBase\Utility\PackageConfig
     {
         return false !== static::instance()->get('database.migrations', false);
     }
+
+    public static function blocksDiscovery()
+    {
+        return static::instance()->get('blocks.discovery', []);
+    }
 }
