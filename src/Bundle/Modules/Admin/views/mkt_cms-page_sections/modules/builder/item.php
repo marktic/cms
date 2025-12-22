@@ -25,14 +25,13 @@ $colsClasses = PageSectionBoostrapColClasses::for($section)->get();
                 Delete
             </a>
         </div>
-
     </div>
     <div class="section_content">
         <div class="row">
             <?php for ($col = 1; $col <= $cols; $col++): ?>
-                <div class="<?= $colsClasses ?>">
+                <div class="<?= $colsClasses ?> section-col" data-col="<?= $col ?>">
                     <div class="p-4 border bg-white">
-                        Column <?= $col ?> content
+                        <?= $this->load('/mkt_cms-page_blocks/modules/builder/add'); ?>
                     </div>
                 </div>
             <?php endfor; ?>

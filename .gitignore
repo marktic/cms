@@ -1,6 +1,8 @@
 .idea
 .phpunit.result.cache
+.yarn
 
+node_modules
 vendor
 
 composer.lock
