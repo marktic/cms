@@ -21,7 +21,8 @@ $blockTypes = $blocksRepository->getTypes();
                     <div class="row row-cols-2">
                         <?php foreach ($blockTypes as $blockType) : ?>
                             <div class="col">
-                                <a href="javascript:" data-type="<?= $blockType->getName(); ?>" class="block-add p-2 bg-light">
+                                <a href="javascript:" data-block-type="<?= $blockType->getName(); ?>"
+                                   class="block-add d-block p-2 btn btn-outline-light">
                                     <div class="icon">
                                         <?= $blockType->getIconHtml(); ?>
                                     </div>

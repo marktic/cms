@@ -1,3 +1,6 @@
+
+import BlocksAddModal from "./admin/blocks-add-modal";
+
 document.addEventListener("DOMContentLoaded", function () {
 
     var pageBuilder = document.getElementById('page-builder')

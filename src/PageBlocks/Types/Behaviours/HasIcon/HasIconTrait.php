@@ -2,7 +2,8 @@
 
 namespace Marktic\Cms\PageBlocks\Types\Behaviours\HasIcon;
 
-use ByTIC\FormBuilder\FormFieldTypes\Icons\FieldIcons;
+
+use ByTIC\Icons\Icons;
 
 trait HasIconTrait
 {
@@ -34,6 +35,6 @@ trait HasIconTrait
 
     protected function getDefaultIcon(): string
     {
-        return FieldIcons::DEFAULT_ICON;
+        return Icons::cog();
     }
 }
