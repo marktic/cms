@@ -17,16 +17,16 @@ class PageSectionBoostrapColClasses extends Action
 
     public function get(): string
     {
-        $cols = $this->getSubject()->getMetadata()->getCols();
+        $cols = (int) $this->getSubject()->getMetadata()->getCols();
         return self::forCols($cols);
     }
 
-    public static function forCols($cols): string
+    public static function forCols(int $cols): string
     {
         return match ($cols) {
-            '4' => 'col-12 col-md-3',
-            '3' => 'col-12 col-md-4',
-            '2' => 'col-12 col-md-6',
+            4 => 'col-12 col-md-3',
+            3 => 'col-12 col-md-4',
+            2 => 'col-12 col-md-6',
             default => 'col-12',
         };
     }

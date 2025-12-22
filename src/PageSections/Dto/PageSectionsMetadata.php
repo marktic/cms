@@ -11,9 +11,9 @@ class PageSectionsMetadata extends Metadata
     public const KEY_COLS = 'col';
     const COL_DEFAULT = 1;
 
-    public function getCols(): string|int
+    public function getCols(): int
     {
-        return $this->get(self::KEY_COLS, 1);
+        return (int) $this->get(self::KEY_COLS, self::COL_DEFAULT);
     }
 
     public function setCols(?string $role): void

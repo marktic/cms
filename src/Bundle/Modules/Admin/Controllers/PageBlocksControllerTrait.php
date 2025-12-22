@@ -18,7 +18,7 @@ trait PageBlocksControllerTrait
             }
 
             $model = CmsModels::pageSections()->getController();
-            return $this->checkForeignModelFromRequest($model, ['section_id', 'id']);
+            $this->checkForeignModelFromRequest($model, ['section_id', 'id']);
         });
     }
 

@@ -9,10 +9,7 @@ abstract class AbstractAdminPresenter extends AbstractBasePresenter implements \
 
     public function render(): string
     {
-        // return a html representation of the block for admin view
-        return '<div class="page-block bg-light p-3 border">'
-            . '<h6>' . $this->block->getTitle() . '</h6>'
-            . '</div>';
+        return '<h6 class="block-title">' . $this->block->getTitle() . '</h6>';
     }
 
     public function __toString()

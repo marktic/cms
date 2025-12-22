@@ -29,6 +29,11 @@ trait PageSectionsRepositoryTrait
         $this->initRelationsCmsPageBlocks();
     }
 
+    public function generatePrimaryFK(): string
+    {
+        return 'section_id';
+    }
+
     protected function generateTable()
     {
         return PackageConfig::tableName(CmsModels::PAGE_SECTIONS);
