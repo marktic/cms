@@ -31,6 +31,12 @@ class PageBuilder extends Metadata
         return $builder;
     }
 
+    public function forSection($sectionId): ?PageRow
+    {
+        $sectionId = is_object($sectionId) ? $sectionId->id : $sectionId;
+        return $this->rows[$sectionId] ?? null;
+    }
+
     /**
      * @param Collection|array|PageSection[] $sections
      * @return $this

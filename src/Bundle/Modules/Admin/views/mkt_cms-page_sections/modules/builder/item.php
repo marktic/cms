@@ -1,12 +1,14 @@
 <?php
 /** @var PageSection $section */
 
-use Marktic\Cms\PageSections\Actions\PageSectionBoostrapColClasses;
+use Marktic\Cms\Pages\Dto\PageBuilder\PageRow;
 use Marktic\Cms\PageSections\Models\PageSection;
 
 $section = $section ?? $this->section;
-$cols = $section->getMetadata()->getCols();
-$colsClasses = PageSectionBoostrapColClasses::for($section)->get();
+
+/** @var PageRow $builderRow */
+$builderRow = $this->pageBuilder->forSection($section);
+$builderCols = $builderRow->getCols();
 ?>
 <div class="page_section border" data-section_id="<?= $section->id ?>">
     <div class="section_header bg-light d-flex">
@@ -28,13 +30,17 @@ $colsClasses = PageSectionBoostrapColClasses::for($section)->get();
     </div>
     <div class="section_content">
         <div class="row">
-            <?php for ($col = 1; $col <= $cols; $col++): ?>
-                <div class="<?= $colsClasses ?> section-col" data-col="<?= $col ?>">
+            <?php foreach ($builderCols as $builderCol): ?>
+                <div class="<?= implode(' ', $builderCol->getCssClasses()); ?> section-col"
+                     data-col="<?= $builderCol->getPos() ?>">
+
+                    <?= $this->load('/mkt_cms-page_blocks/modules/builder/list', ['builderCol' => $builderCol]); ?>
+
                     <div class="p-4 border bg-white">
                         <?= $this->load('/mkt_cms-page_blocks/modules/builder/add'); ?>
                     </div>
                 </div>
-            <?php endfor; ?>
+            <?php endforeach; ?>
         </div>
     </div>
 </div>

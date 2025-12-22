@@ -4,6 +4,7 @@ namespace Marktic\Cms\Bundle\Modules\Admin\Controllers;
 
 use Marktic\Cms\Bundle\Modules\Admin\Controllers\Behaviours\HasTenantControllerTrait;
 use Marktic\Cms\Bundle\Modules\Admin\Forms\Pages\DetailsForm;
+use Marktic\Cms\Pages\Actions\CreatePageBuilder;
 use Marktic\Cms\Pages\Models\Page;
 
 /**
@@ -17,10 +18,12 @@ trait PagesControllerTrait
     {
         parent::view();
         $page = $this->getModelFromRequest();
+        $pageBuilder = CreatePageBuilder::for($page)->create();
         $pageSections = $page->getCmsPageSections();
 
         $this->payload()->with(
             [
+                'pageBuilder' => $pageBuilder,
                 'pageSections' => $pageSections,
             ]
         );

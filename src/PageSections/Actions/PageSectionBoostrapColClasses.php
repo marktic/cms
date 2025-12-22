@@ -18,6 +18,11 @@ class PageSectionBoostrapColClasses extends Action
     public function get(): string
     {
         $cols = $this->getSubject()->getMetadata()->getCols();
+        return self::forCols($cols);
+    }
+
+    public static function forCols($cols): string
+    {
         return match ($cols) {
             '4' => 'col-12 col-md-3',
             '3' => 'col-12 col-md-4',

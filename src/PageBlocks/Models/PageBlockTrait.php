@@ -9,12 +9,14 @@ use Marktic\Cms\Base\Models\HasMetadata\RecordHasMetadataTrait;
 use Marktic\Cms\Base\Models\Timestampable\TimestampableTrait;
 use Marktic\Cms\PageBlocks\Dto\PageBlocksMetadata;
 use Marktic\Cms\PageBlocks\Models\Behaviours\HasTypes\HasTypesRecordTrait;
+use Marktic\Cms\PageBlocks\Types\AbstractType;
 use Marktic\Cms\PageSections\ModelsRelated\HasPageSection\HasPageSectionRecordTrait;
 
 /**
  *
  * @property PageBlocksMetadata $metadata
  * @method PageBlocksMetadata getMetadata
+ * @method AbstractType getType()
  */
 trait PageBlockTrait
 {
@@ -34,6 +36,21 @@ trait PageBlockTrait
     public function getTitle(): string
     {
         return $this->title;
+    }
+
+    public function getAdminPresenter()
+    {
+        return $this->getType()->getAdminPresenter();
+    }
+
+    public function getFormPresenter()
+    {
+        return $this->getType()->getFormPresenter();
+    }
+
+    public function getFrontendPresenter()
+    {
+        return $this->getType()->getFrontendPresenter();
     }
 
     protected function getMetadataClass(): ?string

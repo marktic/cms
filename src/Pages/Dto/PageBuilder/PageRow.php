@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Marktic\Cms\Pages\Dto\PageBuilder;
 
 use Marktic\Cms\PageBlocks\Models\PageBlock;
+use Marktic\Cms\PageSections\Actions\PageSectionBoostrapColClasses;
 use Marktic\Cms\PageSections\Models\PageSection;
 
 /**
@@ -35,11 +36,21 @@ class PageRow
         return $this->pos;
     }
 
+    /**
+     * @return PageCol[]
+     */
+    public function getCols(): array
+    {
+        return $this->cols;
+    }
+
     protected function initCols($count = 1): void
     {
         $this->colsCount = $count;
+        $colsClasses = PageSectionBoostrapColClasses::forCols($count);
         for ($i = 1; $i <= $count; $i++) {
             $pageCol = new PageCol();
+            $pageCol->addCssClasses([$colsClasses]);
             $pageCol->setPos($i);
             $this->cols[$i] = $pageCol;
         }

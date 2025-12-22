@@ -20,6 +20,7 @@ trait PageSectionsRepositoryTrait
 
     use BaseRepositoryTrait, HasPageRepositoryTrait, HasPageBlocksRepositoryTrait {
         BaseRepositoryTrait::initRelations insteadof HasPageRepositoryTrait;
+        BaseRepositoryTrait::initRelations insteadof HasPageBlocksRepositoryTrait;
     }
 
     protected function initRelationsCms(): void
