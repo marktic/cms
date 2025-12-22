@@ -39,6 +39,8 @@ final class CmsPageBlocksTable extends AbstractMigration
                 'default' => 'CURRENT_TIMESTAMP',
             ])
             ->addIndex(['section_id'])
+            ->addIndex(['type'])
+            ->addIndex(['order'])
             ->addForeignKey('section_id', 'mkt_cms_page_sections', 'id', ['delete' => 'CASCADE', 'update' => 'NO_ACTION']);
 
         $table->save();

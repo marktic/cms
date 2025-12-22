@@ -17,4 +17,9 @@ trait HasPageSectionRecordTrait
         $this->getRelation('CmsPageSection')->setResults($section);
         return $this;
     }
+
+    public function getCmsPage()
+    {
+        return $this->getCmsPageSection()->getCmsPage();
+    }
 }

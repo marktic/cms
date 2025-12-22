@@ -37,6 +37,24 @@ trait PageBlocksControllerTrait
         return $record;
     }
 
+    /**
+     * @param $type
+     * @param PageBlock $item
+     * @return void
+     */
+    protected function afterActionRedirect($type, $item): void
+    {
+        $page = $item->getCmsPage();
+
+        $this->setAfterUrlFlash(
+            $page->getURL(),
+            $page->getManager()->getController(),
+            ['after-' . $type]
+        );
+
+        parent::afterActionRedirect($type, $item);
+    }
+
     protected function getModelFormClass($model, $action = null): string
     {
         return DetailsForm::class;

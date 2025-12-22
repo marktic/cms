@@ -41,8 +41,7 @@ export default class BlocksAddModal {
 
         blockAddUrl = blockAddUrl + '&block_type=' + BlockType;
 
-        // You can perform an AJAX request to add the block here
-        // For demonstration, we'll just log the URL
-        console.log('Adding block of type:', BlockType, 'using URL:', blockAddUrl);
+        // redirect to the block add URL
+        window.location.href = blockAddUrl;
     }
 }

@@ -21,7 +21,11 @@ trait PageBlocksRepositoryTrait
     use HasTypesRecordsTrait;
     use BaseRepositoryTrait, HasPageSectionRepositoryTrait {
         BaseRepositoryTrait::initRelations insteadof HasPageSectionRepositoryTrait;
-        BaseRepositoryTrait::initRelationsCms insteadof HasPageSectionRepositoryTrait;
+    }
+
+    protected function initRelationsCms(): void
+    {
+        $this->initRelationsCmsPageSection();
     }
 
     protected function generateTable()

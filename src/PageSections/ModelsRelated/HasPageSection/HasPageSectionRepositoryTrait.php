@@ -24,10 +24,9 @@ trait HasPageSectionRepositoryTrait
      */
     protected function initRelationsCmsPageSection()
     {
-        $this->initRelation(
-            'belongsTo',
+        $this->belongsTo(
             self::RELATION_CMS_PAGE_SECTION,
-            ['class' => CmsModels::pageSections(), 'fk' => 'section_id']
+            ['class' => CmsModels::pageSectionsClass(), 'fk' => 'section_id']
         );
     }
 }
