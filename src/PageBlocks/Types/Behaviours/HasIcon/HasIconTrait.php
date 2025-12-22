@@ -23,6 +23,11 @@ trait HasIconTrait
         return $this->icon;
     }
 
+    public function getIconHTML(): string
+    {
+       return (string) $this->getIcon();
+    }
+
     public function setIcon($icon)
     {
         $this->icon = $icon;

@@ -28,6 +28,7 @@ final class CmsPageBlocksTable extends AbstractMigration
         $table
             ->addColumn('section_id', 'integer', ['null' => false, 'signed' => false])
             ->addColumn('type', 'string', ['limit' => 100, 'null' => false])
+            ->addColumn('title', 'string', ['limit' => 255, 'null' => false])
             ->addColumn('metadata', 'json', ['null' => true])
             ->addColumn('order', 'integer', ['null' => false, 'signed' => false, 'default' => 0, 'limit' => \Phinx\Db\Adapter\MysqlAdapter::INT_TINY])
             ->addColumn('updated_at', 'timestamp', [

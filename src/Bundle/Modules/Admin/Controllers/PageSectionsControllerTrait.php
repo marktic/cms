@@ -2,7 +2,6 @@
 
 namespace Marktic\Cms\Bundle\Modules\Admin\Controllers;
 
-
 use Marktic\Cms\Bundle\Modules\Admin\Forms\PageSections\DetailsForm;
 use Marktic\Cms\Pages\Models\Page;
 use Marktic\Cms\PageSections\Models\PageSection;

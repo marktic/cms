@@ -7,11 +7,13 @@ namespace Marktic\Cms\PageBlocks\Models;
 use ByTIC\Records\Behaviors\HasForms\HasFormsRecordTrait;
 use Marktic\Cms\Base\Models\HasMetadata\RecordHasMetadataTrait;
 use Marktic\Cms\Base\Models\Timestampable\TimestampableTrait;
+use Marktic\Cms\PageBlocks\Dto\PageBlocksMetadata;
 use Marktic\Cms\PageBlocks\Models\Behaviours\HasTypes\HasTypesRecordTrait;
-use Nip\Records\Collections\Collection;
-use Nip\Records\Traits\HasUuid\HasUuidRecordTrait;
 
 /**
+ *
+ * @property PageBlocksMetadata $metadata
+ * @method PageBlocksMetadata getMetadata
  */
 trait PageBlockTrait
 {
@@ -19,4 +21,9 @@ trait PageBlockTrait
     use HasFormsRecordTrait;
     use RecordHasMetadataTrait;
     use HasTypesRecordTrait;
+
+    protected function getMetadataClass(): ?string
+    {
+        return PageBlocksMetadata::class;
+    }
 }

@@ -26,7 +26,7 @@ $blockTypes = $blocksRepository->getTypes();
                                     <div class="icon">
                                         <?= $blockType->getIconHtml(); ?>
                                     </div>
-                                    <div class="label">
+                                    <div class="label text-primary">
                                         <?= $blockType->getLabel(); ?>
                                     </div>
                                 </a>

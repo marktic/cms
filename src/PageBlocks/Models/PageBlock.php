@@ -15,4 +15,5 @@ class PageBlock extends Record
     public function getRegistry()
     {
     }
+
 }

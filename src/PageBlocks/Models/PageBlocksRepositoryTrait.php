@@ -9,6 +9,7 @@ use Marktic\Cms\Base\Models\Timestampable\TimestampableManagerTrait;
 use Marktic\Cms\Base\Models\Traits\BaseRepositoryTrait;
 use Marktic\Cms\Base\Models\Traits\HasDatabaseConnectionTrait;
 use Marktic\Cms\PageBlocks\Models\Behaviours\HasTypes\HasTypesRecordsTrait;
+use Marktic\Cms\PageSections\ModelsRelated\HasPageSection\HasPageSectionRepositoryTrait;
 use Marktic\Cms\Utility\CmsModels;
 use Marktic\Cms\Utility\PackageConfig;
 
@@ -17,11 +18,10 @@ trait PageBlocksRepositoryTrait
     public const TABLE = 'mkt_cms_page_blocks';
     public const CONTROLLER = 'mkt_cms-page_blocks';
 
-    use BaseRepositoryTrait;
     use HasTypesRecordsTrait;
-
-    protected function initRelationsCms()
-    {
+    use BaseRepositoryTrait, HasPageSectionRepositoryTrait {
+        BaseRepositoryTrait::initRelations insteadof HasPageSectionRepositoryTrait;
+        BaseRepositoryTrait::initRelationsCms insteadof HasPageSectionRepositoryTrait;
     }
 
     protected function generateTable()
