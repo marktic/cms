@@ -7,6 +7,7 @@ namespace Marktic\Cms\PageSections\Models;
 use ByTIC\Records\Behaviors\HasForms\HasFormsRecordTrait;
 use Marktic\Cms\Base\Models\HasMetadata\RecordHasMetadataTrait;
 use Marktic\Cms\Base\Models\Timestampable\TimestampableTrait;
+use Marktic\Cms\PageBlocks\ModelsRelated\HasPageBlocks\HasPageBlocksRecordTrait;
 use Marktic\Cms\Pages\Models\Page;
 use Marktic\Cms\Pages\ModelsRelated\HasPage\HasPageRecordTrait;
 use Marktic\Cms\PageSections\Dto\PageSectionsMetadata;
@@ -25,6 +26,7 @@ trait PageSectionTrait
     use HasFormsRecordTrait;
     use RecordHasMetadataTrait;
     use HasPageRecordTrait;
+    use HasPageBlocksRecordTrait;
 
     public string $title = '';
 

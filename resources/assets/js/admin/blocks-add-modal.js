@@ -43,5 +43,6 @@ export default class BlocksAddModal {
 
         // redirect to the block add URL
         window.location.href = blockAddUrl;
+        console.log('block click:' + blockAddUrl);
     }
 }
