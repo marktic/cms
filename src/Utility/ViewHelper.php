@@ -2,7 +2,6 @@
 
 namespace Marktic\Cms\Utility;
 
-use Marktic\Cms\Utility\PathsHelpers;
 use Nip\View\View;
 
 /**
@@ -12,11 +11,17 @@ class ViewHelper
 {
     public const NAMESPACE = 'MktCMS';
     /**
-     * @param View|PageControllerFormBuilderViewPathsTrait $view
+     * @param View $view
      */
     public static function registerAdminPaths(View $view)
     {
         $view->addPath(PathsHelpers::viewsAdmin(), self::NAMESPACE);
         $view->addPath(PathsHelpers::viewsAdmin());
+    }
+
+    public static function registerFrontendPaths(View $view): void
+    {
+        $view->addPath(PathsHelpers::viewsFrontend(), self::NAMESPACE);
+        $view->addPath(PathsHelpers::viewsFrontend());
     }
 }

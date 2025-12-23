@@ -23,8 +23,13 @@ class PathsHelpers
         return static::basePath() . '/src/Bundle/Modules' . $path;
     }
 
-    public static function viewsAdmin()
+    public static function viewsAdmin(): string
     {
         return static::modules( '/Admin/views');
+    }
+
+    public static function viewsFrontend(): string
+    {
+        return static::modules( '/Frontend/views');
     }
 }

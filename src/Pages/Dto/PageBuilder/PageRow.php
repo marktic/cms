@@ -31,6 +31,11 @@ class PageRow
         return $row;
     }
 
+    public function getSection(): PageSection
+    {
+        return $this->section;
+    }
+
     public function getPos(): int
     {
         return $this->pos;

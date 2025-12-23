@@ -17,12 +17,7 @@ class PageBuilder extends Metadata
     /**
      * @var PageRow[]
      */
-    protected $rows = [];
-
-    /**
-     * @var PageCol
-     */
-    protected $cols = [];
+    protected array $rows = [];
 
     public static function buildFromPage(Page $page): PageBuilder
     {
@@ -35,6 +30,14 @@ class PageBuilder extends Metadata
     {
         $sectionId = is_object($sectionId) ? $sectionId->id : $sectionId;
         return $this->rows[$sectionId] ?? null;
+    }
+
+    /**
+     * @return PageRow[]
+     */
+    public function getRows(): array
+    {
+        return $this->rows;
     }
 
     /**

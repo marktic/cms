@@ -9,6 +9,7 @@ use ByTIC\DataObjects\Casts\Metadata\Metadata;
 class PageBlocksMetadata extends Metadata
 {
     public const KEY_COL = 'col';
+    public const KEY_CONTENT = 'content';
     const COL_DEFAULT = 1;
 
 
@@ -22,4 +23,13 @@ class PageBlocksMetadata extends Metadata
         $this->set(self::KEY_COL, $value);
     }
 
+    public function getContent(): ?string
+    {
+        return $this->get(self::KEY_CONTENT);
+    }
+
+    public function setContent(?string $value): void
+    {
+        $this->set(self::KEY_CONTENT, $value);
+    }
 }
