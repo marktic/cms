@@ -9,7 +9,7 @@ $sections = $this->pageSections;
 ?>
 
 <?php if (count($sections) < 1): ?>
-    <?= $this->load(CmsModels::pageSections()->getMessage('dnx')); ?>
+    <?= $this->Messages()->info(CmsModels::pageSections()->getMessage('dnx')); ?>
 <?php else: ?>
     <div class="page-sections-list d-grid gap-3" >
         <?php foreach ($sections as $section): ?>

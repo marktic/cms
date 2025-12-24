@@ -2,8 +2,8 @@
 
 namespace Marktic\Cms\PageBlocks\Types;
 
-use Marktic\Cms\PageBlocks\Types\Behaviours\AbstractTypeTrait;
 use ByTIC\Models\SmartProperties\Properties\Types\Generic;
+use Marktic\Cms\PageBlocks\Types\Base\Behaviours\AbstractTypeTrait;
 
 /**
  * Class AbstractType

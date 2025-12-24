@@ -2,20 +2,23 @@
 
 declare(strict_types=1);
 
-namespace  Marktic\Cms\Bundle\Modules\Admin\Forms\PageBlocks;
+namespace Marktic\Cms\Bundle\Modules\Admin\Forms\PageBlocks;
 
 use Marktic\Cms\Bundle\Library\Form\FormModel;
 use Marktic\Cms\PageBlocks\Models\PageBlock;
+use Marktic\Cms\PageBlocks\Types\Base\Presenters\AdminForm\AbstractFormPresenter;
 
 /**
  * @method PageBlock getModel()
  */
 class DetailsForm extends FormModel
 {
+    protected $typeObject = null;
+    protected AbstractFormPresenter $typePresenter;
+
     public function initialize()
     {
         parent::initialize();
-
         $this->setAttrib('id', 'mkt-cms-page_blocks-form');
 
         $this->initializeTitle();
@@ -32,15 +35,29 @@ class DetailsForm extends FormModel
     protected function getDataFromModel(): void
     {
         parent::getDataFromModel();
-//        $cols = $this->getModel()->getMetadata()->getCols();
-//        $this->getElement('cols')->setValue($cols);
+        $this->typeObject = $this->getModel()->getType();
+        $this->typePresenter = $this->typeObject->getAdminFormPresenter();
+        $this->typePresenter->setForm($this);
+        $this->typePresenter->initialize();
+        $this->typePresenter->getDataFromModel();
     }
 
-    public function saveToModel()
+    public function processValidation(): void
+    {
+        parent::processValidation();
+        $this->typePresenter->processValidation();
+    }
+
+
+    public function saveToModel(): void
     {
         parent::saveToModel();
+        $this->typePresenter->saveToModel();
+    }
 
-//        $cols = $this->getElement('cols')->getValue();
-//        $this->getModel()->getMetadata()->setCols($cols);
+    public function saveModel(): void
+    {
+        parent::saveModel();
+        $this->typePresenter->saveModel();
     }
 }

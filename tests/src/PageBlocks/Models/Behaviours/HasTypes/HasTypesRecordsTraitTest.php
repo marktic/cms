@@ -3,7 +3,7 @@
 namespace Marktic\Cms\Tests\PageBlocks\Models\Behaviours\HasTypes;
 
 use Marktic\Cms\PageBlocks\Models\PageBlocks;
-use Marktic\Cms\PageBlocks\Types\Html;
+use Marktic\Cms\PageBlocks\Types\Html\Html;
 use Marktic\Cms\Tests\TestCase;
 
 class HasTypesRecordsTraitTest extends TestCase
