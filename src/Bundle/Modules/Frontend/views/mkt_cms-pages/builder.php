@@ -9,8 +9,8 @@ $rows = $pageBuilder->getRows();
         $section = $row->getSection();
         $cols = $row->getCols();
         ?>
-        <div class="mkt-page-builder-row">
-            <h3>
+        <section class="section mkt-page-builder-row">
+            <h3 class="section-title fs-3">
                 <?= $section->getName(); ?>
             </h3>
             <div class="row">
@@ -21,13 +21,13 @@ $rows = $pageBuilder->getRows();
                     <div class="<?= implode(' ', $col->getCssClasses()); ?>">
                         <?php foreach ($blocks as $block): ?>
                             <?php
-                                $presenter = $block->getFrontendPresenter();
-                                if (method_exists($presenter, 'withView')) {
-                                    $presenter->withView($this);
-                                }
+                            $presenter = $block->getFrontendPresenter();
+                            if (method_exists($presenter, 'withView')) {
+                                $presenter->withView($this);
+                            }
                             ?>
                             <div class="mkt-page-builder-block">
-                                <h4 class="mkt-page-builder-block-title">
+                                <h4 class="fw-bold mkt-page-builder-block-title">
                                     <?= $block->getTitle(); ?>
                                 </h4>
                                 <div class="content">
@@ -38,6 +38,6 @@ $rows = $pageBuilder->getRows();
                     </div>
                 <?php endforeach; ?>
             </div>
-        </div>
+        </section>
     <?php endforeach; ?>
 </div>
