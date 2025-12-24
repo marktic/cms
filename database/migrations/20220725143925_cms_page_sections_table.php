@@ -29,6 +29,8 @@ final class CmsPageSectionsTable extends AbstractMigration
             ->addColumn('page_id', 'integer', ['null' => false, 'signed' => false])
             ->addColumn('title', 'string', ['limit' => 255, 'null' => false])
             ->addColumn('metadata', 'json', ['null' => true])
+            ->addColumn('position', 'smallinteger',
+                ['null' => false, 'default' => 0, 'signed' => false])
             ->addColumn('updated_at', 'timestamp', [
                 'default' => 'CURRENT_TIMESTAMP',
                 'update' => 'CURRENT_TIMESTAMP',
@@ -36,8 +38,9 @@ final class CmsPageSectionsTable extends AbstractMigration
             ->addColumn('created_at', 'timestamp', [
                 'default' => 'CURRENT_TIMESTAMP',
             ])
-        ->addIndex(['page_id'])
-        ->addForeignKey('page_id', 'mkt_cms_pages', 'id', ['delete'=> 'CASCADE', 'update'=> 'NO_ACTION']);
+            ->addIndex(['page_id'])
+            ->addIndex(['position'])
+            ->addForeignKey('page_id', 'mkt_cms_pages', 'id', ['delete' => 'CASCADE', 'update' => 'NO_ACTION']);
 
         $table->save();
     }

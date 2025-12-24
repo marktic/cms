@@ -20,6 +20,31 @@ trait PageSectionsControllerTrait
         return $record;
     }
 
+    public function order()
+    {
+        $page = $this->getCmsPageFromRequest();
+
+        parse_str($_POST['order'], $order);
+        $idSections = $order['section'];
+
+        $fields = $page->getCmsPageSections();
+        $fields = $fields->keyBy('id');
+
+        if (count($fields) < 1) {
+            $this->Async()->sendMessage('No fields', 'error');
+        }
+
+        foreach ($idSections as $pos => $idSection) {
+            $record = $fields[$idSection];
+            if ($record) {
+                $record->position = $pos + 1;
+                $record->update();
+            }
+        }
+
+        $this->Async()->sendMessage('Fields reordered');
+    }
+
     /**
      * @param $type
      * @param PageSection $item
