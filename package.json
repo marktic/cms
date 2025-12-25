@@ -11,8 +11,11 @@
     "prod": "yarn run production",
     "production": "yarn encore prod"
   },
+  "dependencies": {
+    "sortablejs": "^1.15.6"
+  },
   "devDependencies": {
     "jgrowl": "^1.4"
   },
-  "packageManager": "yarn@4.12.0"
+  "packageManager": "yarn@4.12.0",
 }

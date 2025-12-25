@@ -10,7 +10,7 @@ $section = $section ?? $this->section;
 $builderRow = $this->pageBuilder->forSection($section);
 $builderCols = $builderRow->getCols();
 ?>
-<div class="page_section border shadow-sm" data-section_id="<?= $section->id ?>">
+<div class="page_section border shadow-sm" data-id="<?= $section->id ?>" >
     <div class="section_header bg-light d-flex">
         <h5 class="section_title fw-bold flex-grow-1 px-4 py-2 m-0">
             <?= \ByTIC\Icons\Icons::arrowsAlt(); ?>

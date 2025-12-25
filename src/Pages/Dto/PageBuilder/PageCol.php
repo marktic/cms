@@ -13,6 +13,7 @@ class PageCol
     protected $cssClasses = [];
 
     protected $blocks = [];
+    protected PageRow $parentRow;
 
     public function getPos(): int
     {
@@ -47,5 +48,15 @@ class PageCol
     public function getBlocks(): array
     {
         return $this->blocks;
+    }
+
+    public function setParentRow(PageRow $row)
+    {
+        $this->parentRow = $row;
+    }
+
+    public function getParentRow(): ?PageRow
+    {
+        return $this->parentRow;
     }
 }

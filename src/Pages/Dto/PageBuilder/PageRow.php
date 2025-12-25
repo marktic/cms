@@ -57,6 +57,7 @@ class PageRow
             $pageCol = new PageCol();
             $pageCol->addCssClasses([$colsClasses]);
             $pageCol->setPos($i);
+            $pageCol->setParentRow($this);
             $this->cols[$i] = $pageCol;
         }
     }

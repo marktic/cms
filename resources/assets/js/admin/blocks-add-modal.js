@@ -1,5 +1,5 @@
 
-export default class BlocksAddModal {
+export default class CmsBlocksAddModal {
     constructor(container) {
         this.container = container;
         this.init();
@@ -43,6 +43,5 @@ export default class BlocksAddModal {
 
         // redirect to the block add URL
         window.location.href = blockAddUrl;
-        console.log('block click:' + blockAddUrl);
     }
 }

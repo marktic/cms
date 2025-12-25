@@ -1,28 +1,12 @@
-
-import BlocksAddModal from "./admin/blocks-add-modal";
+import CmsBlocksAddModal from "./admin/blocks-add-modal";
+import CmsBlocksSortable from "./admin/blocks-sortable";
+import CmsSectionsSortable from "./admin/sections-sortable";
 
 document.addEventListener("DOMContentLoaded", function () {
-
     var pageBuilder = document.getElementById('page-builder')
-
     if (pageBuilder) {
-        var blocksAddModal = new BlocksAddModal(pageBuilder);
+        var blocksAddModal = new CmsBlocksAddModal(pageBuilder);
+        var blocksSortable = new CmsBlocksSortable(pageBuilder);
+        var sectionsSortable = new CmsSectionsSortable(pageBuilder);
     }
-
-    $("#page-builder .page-sections-list").sortable({
-        update: function (event, ui) {
-            var order = $(this).sortable('serialize');
-
-            $.ajax({
-                url: $(this).data('url'),
-                type: 'post',
-                data: {
-                    'order': order
-                },
-                success: function (data) {
-                    jQuery.jGrowl(data.message, {life: 10000, theme: data.type});
-                }
-            });
-        }
-    });
 });
