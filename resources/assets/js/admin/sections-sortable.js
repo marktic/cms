@@ -22,20 +22,23 @@ export default class CmsSectionsSortable {
         });
     }
 
-    saveOrder() {
-        var order = this.sortable.toArray();
-        console.log(order);
-        $.ajax({
-            url: this.storeOrderUrl,
-            type: 'post',
-            data: {
-                'order': order
-            },
-            success: function (data) {
-                if (typeof jQuery.jGrowl === 'function') {
-                    jQuery.jGrowl(data.message, {life: 10000, theme: data.type});
-                }
+    async saveOrder() {
+        const order = this.sortable.toArray();
+        try {
+            const response = await fetch(this.storeOrderUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+                    'X-Requested-With': 'XMLHttpRequest'
+                },
+                body: new URLSearchParams({order})
+            });
+            const data = await response.json();
+            if (typeof jQuery?.jGrowl === 'function') {
+                jQuery.jGrowl(data.message, {life: 10000, theme: data.type});
             }
-        });
+        } catch (error) {
+            console.error('Error saving order:', error);
+        }
     }
 }

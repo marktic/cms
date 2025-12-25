@@ -21,13 +21,13 @@ trait PageBlocksControllerTrait
         });
     }
 
-    public function order()
+    public function order(): void
     {
-        $idBlocks = $this->getRequest()->get('order');
+        $idBlocks = (array) $this->getRequest()->get('order');
         $section_id = $this->getRequest()->get('section_id');
         $col_id = $this->getRequest()->get('col_id');
 
-        $blocks = CmsModels::pageBlocks()->findByPrimary((array)$idBlocks);
+        $blocks = CmsModels::pageBlocks()->findByPrimary($idBlocks);
         $blocks = $blocks->keyBy('id');
 
         if (count($blocks) < 1) {
@@ -35,8 +35,8 @@ trait PageBlocksControllerTrait
         }
 
         foreach ($idBlocks as $pos => $idBlock) {
-            /** @var PageBlock $record */
-            $record = $blocks[$idBlock];
+            /** @var PageBlock|null $record */
+            $record = $blocks[$idBlock] ?? null;
             if ($record) {
                 $record->section_id = $section_id;
                 $record->getMetadata()->setCol($col_id);

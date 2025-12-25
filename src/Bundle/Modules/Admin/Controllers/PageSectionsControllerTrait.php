@@ -20,10 +20,10 @@ trait PageSectionsControllerTrait
         return $record;
     }
 
-    public function order()
+    public function order(): void
     {
         $page = $this->getCmsPageFromRequest();
-        $idSections = $this->getRequest()->get('order');
+        $idSections = (array) $this->getRequest()->get('order');
 
         $fields = $page->getCmsPageSections();
         $fields = $fields->keyBy('id');
@@ -33,7 +33,7 @@ trait PageSectionsControllerTrait
         }
 
         foreach ($idSections as $pos => $idSection) {
-            $record = $fields[$idSection];
+            $record = $fields[$idSection] ?? null;
             if ($record) {
                 $record->position = $pos + 1;
                 $record->update();

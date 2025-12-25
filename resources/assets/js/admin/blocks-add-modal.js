@@ -21,27 +21,27 @@ export default class CmsBlocksAddModal {
 
     showModal(event) {
         // Button that triggered the modal
-        var link = event.relatedTarget
+        const link = event.relatedTarget
 
-        var colDiv = link.closest('.section-col');
-        var col = colDiv.getAttribute('data-col');
+        const colDiv = link.closest('.section-col');
+        const col = colDiv?.getAttribute('data-col');
 
-        var sectionDiv = colDiv.closest('.page_section');
-        var sectionId = sectionDiv.getAttribute('data-section_id');
+        const sectionDiv = colDiv?.closest('.page_section');
+        const sectionId = sectionDiv?.getAttribute('data-id');
 
-        var blockAddUrl = this.addUrlBase + '?col=' + col + '&section_id=' + sectionId;
+        const blockAddUrl = `${this.addUrlBase}?col=${col}&section_id=${sectionId}`;
         this.modal.querySelector('.modal-body a.block-add')
-            .addEventListener('click', (event) => this.onBlockAddClick(event , blockAddUrl));
+            ?.addEventListener('click', (event) => this.onBlockAddClick(event, blockAddUrl), {once: true});
     }
 
     onBlockAddClick(event, blockAddUrl) {
         event.preventDefault();
-        var blockAddLink = event.currentTarget;
-        var BlockType = blockAddLink.getAttribute('data-block-type');
+        const blockAddLink = event.currentTarget;
+        const blockType = blockAddLink.getAttribute('data-block-type');
 
-        blockAddUrl = blockAddUrl + '&block_type=' + BlockType;
+        const finalUrl = `${blockAddUrl}&block_type=${blockType}`;
 
         // redirect to the block add URL
-        window.location.href = blockAddUrl;
+        window.location.href = finalUrl;
     }
 }

@@ -24,28 +24,33 @@ export default class CmsBlocksSortable {
         });
     }
 
-    saveOrder(evt) {
-        var itemEl = evt.item;
-        var toList = evt.to;
-        var order = Sortable.get(toList).toArray();
+    async saveOrder(evt) {
+        const toList = evt.to;
+        const order = Sortable.get(toList).toArray();
 
-        var sectionId = toList.getAttribute('data-section-id');
-        var colId = toList.getAttribute('data-col-id');
+        const sectionId = toList.getAttribute('data-section-id');
+        const colId = toList.getAttribute('data-col-id');
 
-        $.ajax({
-            url: this.storeBlockUrl,
-            type: 'post',
-            data: {
-                'order': order,
-                'section_id': sectionId,
-                'col_id': colId
-            },
-            success: function (data) {
-                if (typeof jQuery.jGrowl === 'function') {
-                    jQuery.jGrowl(data.message, {life: 10000, theme: data.type});
-                }
+        try {
+            const response = await fetch(this.storeBlockUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+                    'X-Requested-With': 'XMLHttpRequest'
+                },
+                body: new URLSearchParams({
+                    'order': order,
+                    'section_id': sectionId,
+                    'col_id': colId
+                })
+            });
+            const data = await response.json();
+            if (typeof jQuery?.jGrowl === 'function') {
+                jQuery.jGrowl(data.message, {life: 10000, theme: data.type});
             }
-        });
+        } catch (error) {
+            console.error('Error saving block order:', error);
+        }
     }
 
 
