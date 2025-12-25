@@ -33,4 +33,15 @@ trait PageBlocksRepositoryTrait
         return PackageConfig::tableName(CmsModels::PAGE_BLOCKS);
     }
 
+    protected function injectParams(&$params = [])
+    {
+        parent::injectParams($params);
+        $this->injectParamsOrder($params);
+    }
+
+    protected function injectParamsOrder(&$params = []): void
+    {
+        $params['order'][] = ['position', 'ASC'];
+    }
+
 }

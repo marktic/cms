@@ -23,9 +23,7 @@ trait PageSectionsControllerTrait
     public function order()
     {
         $page = $this->getCmsPageFromRequest();
-
-        parse_str($_POST['order'], $order);
-        $idSections = $order['section'];
+        $idSections = $this->getRequest()->get('order');
 
         $fields = $page->getCmsPageSections();
         $fields = $fields->keyBy('id');
@@ -42,7 +40,7 @@ trait PageSectionsControllerTrait
             }
         }
 
-        $this->Async()->sendMessage('Fields reordered');
+        $this->Async()->sendMessage('Blocks reordered');
     }
 
     /**

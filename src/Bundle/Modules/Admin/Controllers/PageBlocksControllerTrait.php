@@ -9,7 +9,6 @@ use Marktic\Cms\Utility\CmsModels;
 
 trait PageBlocksControllerTrait
 {
-
     public function bootPageBlocksControllerTrait()
     {
         $this->onParseRequest(function () {
@@ -20,6 +19,33 @@ trait PageBlocksControllerTrait
             $model = CmsModels::pageSections()->getController();
             $this->checkForeignModelFromRequest($model, ['section_id', 'id']);
         });
+    }
+
+    public function order()
+    {
+        $idBlocks = $this->getRequest()->get('order');
+        $section_id = $this->getRequest()->get('section_id');
+        $col_id = $this->getRequest()->get('col_id');
+
+        $blocks = CmsModels::pageBlocks()->findByPrimary((array)$idBlocks);
+        $blocks = $blocks->keyBy('id');
+
+        if (count($blocks) < 1) {
+            $this->Async()->sendMessage('No blocks found', 'error');
+        }
+
+        foreach ($idBlocks as $pos => $idBlock) {
+            /** @var PageBlock $record */
+            $record = $blocks[$idBlock];
+            if ($record) {
+                $record->section_id = $section_id;
+                $record->getMetadata()->setCol($col_id);
+                $record->position = $pos + 1;
+                $record->update();
+            }
+        }
+
+        $this->Async()->sendMessage('Blocks reordered');
     }
 
     public function addNewModel()

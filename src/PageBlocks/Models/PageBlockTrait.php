@@ -28,6 +28,8 @@ trait PageBlockTrait
 
     public string $title = '';
 
+    public string|int $position = 0;
+
     public function getName(): string
     {
         return $this->title;
