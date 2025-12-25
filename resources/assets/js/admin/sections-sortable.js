@@ -3,17 +3,17 @@ import Sortable from 'sortablejs';
 
 
 export default class CmsSectionsSortable {
-    constructor(container) {
-        this.container = container;
+    constructor(manager) {
+        this.manager = manager;
+        this.container = manager.container;
         this.init();
     }
 
     init() {
-        var sectionListContainer = this.container.querySelector('.page-sections-list');
+        const sectionListContainer = this.manager.sectionListContainer;
         if (!sectionListContainer) {
             return;
         }
-        this.storeOrderUrl = sectionListContainer.getAttribute('data-order-url');
         this.sortable = Sortable.create(sectionListContainer, {
             animation: 150,
             onEnd: () => {
@@ -24,21 +24,6 @@ export default class CmsSectionsSortable {
 
     async saveOrder() {
         const order = this.sortable.toArray();
-        try {
-            const response = await fetch(this.storeOrderUrl, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
-                    'X-Requested-With': 'XMLHttpRequest'
-                },
-                body: new URLSearchParams({order})
-            });
-            const data = await response.json();
-            if (typeof jQuery?.jGrowl === 'function') {
-                jQuery.jGrowl(data.message, {life: 10000, theme: data.type});
-            }
-        } catch (error) {
-            console.error('Error saving order:', error);
-        }
+        await this.manager.post(this.manager.storeOrderUrl, {order});
     }
 }

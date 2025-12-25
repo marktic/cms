@@ -1,22 +1,22 @@
 
 export default class CmsBlocksAddModal {
-    constructor(container) {
-        this.container = container;
+    constructor(manager) {
+        this.manager = manager;
+        this.container = manager.container;
         this.init();
     }
 
     init() {
         this.initModal();
-        this.initAddButtons();
     }
 
     initModal() {
         this.modal = this.container.querySelector('#cms-blocks-add-modal');
+        if (!this.modal) {
+            return;
+        }
         this.addUrlBase = this.modal.querySelector('.modal-body').getAttribute('data-block-add-url');
         this.modal.addEventListener('show.bs.modal', (event) => this.showModal(event));
-    }
-
-    initAddButtons() {
     }
 
     showModal(event) {
