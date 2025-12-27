@@ -19,6 +19,8 @@ class PageBuilder extends Metadata
      */
     protected array $rows = [];
 
+    protected array $blocksTypes = [];
+
     public static function buildFromPage(Page $page): PageBuilder
     {
         $builder = new self();
@@ -55,6 +57,14 @@ class PageBuilder extends Metadata
     public function addBlock(PageBlock $block): static
     {
         $this->rows[$block->section_id]->addBlock($block);
+
+        $blockTypeName = $block->getType()->getName();
+        $this->blocksTypes[$blockTypeName] = $blockTypeName;
         return $this;
+    }
+
+    public function hasBlockType(string $typeName): bool
+    {
+        return isset($this->blocksTypes[$typeName]);
     }
 }
