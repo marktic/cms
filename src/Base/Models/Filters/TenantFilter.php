@@ -2,20 +2,22 @@
 
 namespace Marktic\Cms\Base\Models\Filters;
 
-use Nip\Database\Query\AbstractQuery;
 use Nip\Database\Query\Select as SelectQuery;
-use Nip\HelperBroker;
-use Nip\Records\Filters\Column\AbstractFilter;
-use Nip\Records\Filters\Column\FilterInterface;
-use Nip\Records\Locator\ModelLocator;
+use Nip\Records\Filters\AbstractFilter;
 use Nip\Records\Record;
 
 /**
  * Class TenantFilter
  * @package Marktic\Cms\Base\Models\Filters
  */
-class TenantFilter extends AbstractFilter implements FilterInterface
+class TenantFilter extends AbstractFilter
 {
+    public const NAME = 'tenant';
+
+    public function initName(): void
+    {
+        $this->setName(self::NAME);
+    }
 
     /**
      * @param SelectQuery $query
@@ -25,7 +27,7 @@ class TenantFilter extends AbstractFilter implements FilterInterface
         $tenant = $this->getTenantRecord();
 
         $query->where("tenant = ?", $tenant->getManager()->getMorphName());
-        $query->where('tenant_id = ?', $tenant->getId());
+        $query->where('tenant_id = ?', $tenant->id);
     }
 
     /**
@@ -36,5 +38,15 @@ class TenantFilter extends AbstractFilter implements FilterInterface
         $record = $this->getValue();
 
         return $record;
+    }
+
+    public function isValidRequestValue($value): bool
+    {
+        return $value instanceof Record;
+    }
+
+    public function cleanRequestValue($value): Record
+    {
+        return $value;
     }
 }
