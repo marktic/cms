@@ -2,6 +2,7 @@
 
 namespace Marktic\Cms\Bundle\Modules\Admin\Controllers\Behaviours;
 
+use Marktic\Cms\Base\Models\Filters\TenantFilter;
 use Nip\Records\Filters\Sessions\Session;
 
 trait HasTenantControllerTrait
@@ -13,12 +14,10 @@ trait HasTenantControllerTrait
 
     protected function getRequestFilters($session = null)
     {
+        $request = $this->getRequest();
+        $request->setAttribute(TenantFilter::NAME, $this->getCmsTenantFromRequest());
         /** @var Session $filter */
-        $filter = parent::getRequestFilters($session);
-        $data = $filter->getData();
-        $data['tenant'] = $this->getCmsTenantFromRequest();
-        $filter->initWithData($data);
-        return $filter;
+        return parent::getRequestFilters($session);
     }
 
     /**
