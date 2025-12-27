@@ -4,6 +4,7 @@ namespace Marktic\Cms\PageBlocks\Types\Base\Presenters\Frontend;
 
 use Nip\View\View;
 use Nip\View\Template\Template;
+
 /**
  *
  */
@@ -13,11 +14,11 @@ class ViewFrontendPresenter extends AbstractFrontendPresenter
 
     protected ?string $template = null;
 
-    protected array $params = [];
+    protected ?array $params = null;
 
     public function render(): string
     {
-        return $this->getView()->render($this->getTemplate(), $this->params);
+        return $this->getView()->render($this->getTemplate(), $this->getParams());
     }
 
     public function withView(Template|View $view): self
@@ -37,6 +38,7 @@ class ViewFrontendPresenter extends AbstractFrontendPresenter
         }
         return $this->view;
     }
+
     public function withTemplate(string $template): self
     {
         $this->template = $template;
@@ -50,12 +52,27 @@ class ViewFrontendPresenter extends AbstractFrontendPresenter
         }
         return $this->template;
     }
+
     protected function createView()
     {
         throw new \Exception("Please call withView to set a view instance to use presenter [" . __CLASS__ . "].");
     }
 
-    protected function generateTemplate() {
+    protected function generateTemplate()
+    {
         throw new \Exception("Please call withTemplate to set a template to use for presenter [" . __CLASS__ . "].");
+    }
+
+    protected function getParams(): ?array
+    {
+        if ($this->params === null) {
+            $this->params = $this->generateParams();
+        }
+        return $this->params;
+    }
+
+    protected function generateParams(): array
+    {
+        return [];
     }
 }
