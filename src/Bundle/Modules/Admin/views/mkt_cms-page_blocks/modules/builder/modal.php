@@ -18,15 +18,15 @@ $blockTypes = $blocksRepository->getTypes();
             </div>
             <div class="modal-body" data-block-add-url="<?= $blocksRepository->compileURL('add'); ?>">
                 <div class="container">
-                    <div class="row row-cols-2">
+                    <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-5 g-3">
                         <?php foreach ($blockTypes as $blockType) : ?>
                             <div class="col">
                                 <a href="javascript:" data-block-type="<?= $blockType->getName(); ?>"
-                                   class="block-add d-block p-2 btn btn-outline-light">
-                                    <div class="icon">
+                                   class="block-add d-block p-2 btn btn-outline-info">
+                                    <div class="icon fs-3">
                                         <?= $blockType->getIconHtml(); ?>
                                     </div>
-                                    <div class="label text-primary">
+                                    <div class="label">
                                         <?= $blockType->getLabel(); ?>
                                     </div>
                                 </a>

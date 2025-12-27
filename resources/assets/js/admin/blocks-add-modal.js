@@ -3,10 +3,6 @@ export default class CmsBlocksAddModal {
     constructor(manager) {
         this.manager = manager;
         this.container = manager.container;
-        this.init();
-    }
-
-    init() {
         this.initModal();
     }
 
@@ -20,28 +16,33 @@ export default class CmsBlocksAddModal {
     }
 
     showModal(event) {
-        // Button that triggered the modal
-        const link = event.relatedTarget
+        const triggerButton = event.relatedTarget;
+        const context = this.getModalContext(triggerButton);
+        const blockAddUrl = `${this.addUrlBase}?col=${context.col}&section_id=${context.sectionId}`;
 
-        const colDiv = link.closest('.section-col');
-        const col = colDiv?.getAttribute('data-col');
+        this.updateBlockLinks(blockAddUrl);
+    }
 
+    getModalContext(triggerButton) {
+        const colDiv = triggerButton.closest('.section-col');
         const sectionDiv = colDiv?.closest('.page_section');
-        const sectionId = sectionDiv?.getAttribute('data-id');
 
-        const blockAddUrl = `${this.addUrlBase}?col=${col}&section_id=${sectionId}`;
-        this.modal.querySelector('.modal-body a.block-add')
-            ?.addEventListener('click', (event) => this.onBlockAddClick(event, blockAddUrl), {once: true});
+        return {
+            col: colDiv?.getAttribute('data-col'),
+            sectionId: sectionDiv?.getAttribute('data-id')
+        };
+    }
+
+    updateBlockLinks(blockAddUrl) {
+        this.modal.querySelectorAll('.modal-body a.block-add')
+            .forEach(link => {
+                link.onclick = (event) => this.onBlockAddClick(event, blockAddUrl);
+            });
     }
 
     onBlockAddClick(event, blockAddUrl) {
         event.preventDefault();
-        const blockAddLink = event.currentTarget;
-        const blockType = blockAddLink.getAttribute('data-block-type');
-
-        const finalUrl = `${blockAddUrl}&block_type=${blockType}`;
-
-        // redirect to the block add URL
-        window.location.href = finalUrl;
+        const blockType = event.currentTarget.getAttribute('data-block-type');
+        window.location.href = `${blockAddUrl}&block_type=${blockType}`;
     }
 }
