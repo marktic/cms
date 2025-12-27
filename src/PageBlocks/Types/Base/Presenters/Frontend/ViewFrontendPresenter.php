@@ -3,7 +3,7 @@
 namespace Marktic\Cms\PageBlocks\Types\Base\Presenters\Frontend;
 
 use Nip\View\View;
-
+use Nip\View\Template\Template;
 /**
  *
  */
@@ -17,11 +17,14 @@ class ViewFrontendPresenter extends AbstractFrontendPresenter
 
     public function render(): string
     {
-        return $this->getView()->load($this->getTemplate(), $this->params);
+        return $this->getView()->render($this->getTemplate(), $this->params);
     }
 
-    public function withView(View $view): self
+    public function withView(Template|View $view): self
     {
+        if ($view instanceof Template) {
+            $view = $view->getEngine();
+        }
         $this->view = $view;
         return $this;
     }
@@ -43,12 +46,16 @@ class ViewFrontendPresenter extends AbstractFrontendPresenter
     public function getTemplate(): string
     {
         if (empty($this->template)) {
-            throw new \Exception("Please call withTemplate to set a template to use presenter [" . __CLASS__ . "].");
+            $this->template = $this->generateTemplate();
         }
         return $this->template;
     }
     protected function createView()
     {
         throw new \Exception("Please call withView to set a view instance to use presenter [" . __CLASS__ . "].");
+    }
+
+    protected function generateTemplate() {
+        throw new \Exception("Please call withTemplate to set a template to use for presenter [" . __CLASS__ . "].");
     }
 }
