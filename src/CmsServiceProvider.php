@@ -37,11 +37,11 @@ class CmsServiceProvider extends BaseBootableServiceProvider
     public function boot(): void
     {
         parent::boot();
-        CmsModels::sites();
-        CmsModels::menus();
-        CmsModels::menuItems();
-        CmsModels::pages();
-        CmsModels::pageSections();
-        CmsModels::pageBlocks();
+//        CmsModels::sites();
+//        CmsModels::menus();
+//        CmsModels::menuItems();
+//        CmsModels::pages();
+//        CmsModels::pageSections();
+//        CmsModels::pageBlocks();
     }
 }
