@@ -30,7 +30,6 @@ final class CmsPagesTable extends AbstractMigration
             ->addColumn('tenant_id', 'integer', ['null' => false, 'signed' => false])
             ->addColumn('name', 'string', ['limit' => 255, 'null' => false])
             ->addColumn('slug', 'string', ['limit' => 255, 'null' => false])
-            ->addColumn('', 'text', ['null' => false])
             ->addColumn('metadata', 'json', ['null' => true])
             ->addColumn('updated_at', 'timestamp', [
                 'default' => 'CURRENT_TIMESTAMP',
