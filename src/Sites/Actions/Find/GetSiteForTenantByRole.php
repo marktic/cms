@@ -8,11 +8,12 @@ use Bytic\Actions\Behaviours\Entities\FindRecord;
 use Bytic\Actions\Behaviours\HasSubject\HasSubject;
 use Marktic\Cms\Base\Actions\Find\HasTenantTrait;
 use Marktic\Cms\Sites\Dto\SiteMetadata;
+use Marktic\Cms\SitesRoles\Dto\SiteRolesCollection;
 use Nip\Records\Record;
 
 class GetSiteForTenantByRole extends AbstractAction
 {
-    protected string $role = SiteMetadata::ROLE_DEFAULT;
+    protected string $role = SiteRolesCollection::ROLE_DEFAULT;
 
     use HasSubject;
     use FindRecord, HasTenantTrait;

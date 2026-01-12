@@ -9,7 +9,6 @@ use ByTIC\DataObjects\Casts\Metadata\Metadata;
 class SiteMetadata extends Metadata
 {
     public const KEY_ROLE = 'role';
-    const ROLE_DEFAULT = 'default';
 
     public function getRole(): ?string
     {

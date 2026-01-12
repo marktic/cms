@@ -9,6 +9,6 @@ $item = $item ?? null;
         </a>
     </td>
     <td>
-        <pre class="bg-light p-2 text-monospace"><?= json_encode($item->metadata->toArray()); ?></pre>
+        <?= $item->getRoleObject()->getLabel(); ?>
     </td>
 </tr>

@@ -42,4 +42,12 @@ return [
             ],
         ],
     ],
+    'site_roles' => [
+        'default' => [
+            'name' => 'default',
+            'label' => 'Default',
+            'unique' => false,
+            'mandatory' => true,
+        ],
+    ],
 ];

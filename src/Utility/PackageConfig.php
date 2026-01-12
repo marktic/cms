@@ -43,4 +43,11 @@ class PackageConfig extends \ByTIC\PackageBase\Utility\PackageConfig
     {
         return static::instance()->get('blocks.discovery', []);
     }
+
+    public static function siteRoles(): array
+    {
+        $roles = static::instance()->get('site_roles', []);
+
+        return $roles instanceof \Nip\Config\Config ? $roles->toArray() : (array) $roles;
+    }
 }

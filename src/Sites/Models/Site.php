@@ -9,4 +9,6 @@ use Nip\Records\Record;
 class Site extends Record
 {
     use SiteTrait;
+
+
 }
