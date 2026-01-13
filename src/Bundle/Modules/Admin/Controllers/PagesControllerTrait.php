@@ -6,6 +6,7 @@ use Marktic\Cms\Bundle\Modules\Admin\Controllers\Behaviours\HasTenantControllerT
 use Marktic\Cms\Bundle\Modules\Admin\Forms\Pages\DetailsForm;
 use Marktic\Cms\Pages\Actions\CreatePageBuilder;
 use Marktic\Cms\Pages\Models\Page;
+use Marktic\Cms\PageSections\Models\PageSection;
 
 /**
  * @method Page getModelFromRequest
@@ -27,6 +28,16 @@ trait PagesControllerTrait
                 'pageSections' => $pageSections,
             ]
         );
+    }
+
+    public function addNewModel()
+    {
+        /** @var Page $record */
+        $record = parent::addNewModel();
+
+        $page = $this->getCmsTenantFromRequest();
+        $record->populateFromTenant($page);
+        return $record;
     }
 
     protected function getModelFormClass($model, $action = null): string
