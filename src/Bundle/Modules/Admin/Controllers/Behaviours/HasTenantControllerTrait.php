@@ -3,10 +3,21 @@
 namespace Marktic\Cms\Bundle\Modules\Admin\Controllers\Behaviours;
 
 use Marktic\Cms\Base\Models\Filters\TenantFilter;
+use Marktic\Cms\Bundle\Setup\SetupCms;
 use Nip\Records\Filters\Sessions\Session;
 
 trait HasTenantControllerTrait
 {
+    protected function bootAbstractCmsControllerTrait()
+    {
+        $this->before(
+            function () {
+                $action = SetupCms::for($this->getCmsTenantFromRequest())->handle();
+                $this->registerCmsViewPaths();
+            }
+        );
+    }
+
     public function tenant()
     {
         $this->doModelsListing();

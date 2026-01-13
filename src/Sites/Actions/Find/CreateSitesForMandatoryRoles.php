@@ -23,9 +23,12 @@ class CreateSitesForMandatoryRoles extends AbstractAction
     {
         $tenant = $this->getSubject();
         $roles = $this->getRoles();
+        $sites = [];
         foreach ($roles as $role) {
-            $this->checkSiteForRole($tenant, $role);
+            $site = $this->checkSiteForRole($tenant, $role);
+            $sites[$site->id] = $site;
         }
+        return $sites;
     }
 
     /**

@@ -27,6 +27,11 @@ class GetPageForSiteByRole extends AbstractAction
     }
     use HasTenantTrait;
 
+    public function withRole(string $role): static
+    {
+        $this->role = $role;
+        return $this;
+    }
 
     protected function findParams(): array
     {
